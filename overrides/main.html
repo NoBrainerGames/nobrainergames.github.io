@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block site_meta %}
+  {{ super() }}
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+{% endblock %}
+
+{% block extrahead %}
+  {{ super() }}
+
+  <style>
+    /* Custom background */
+    body {
+      /* Full height */
+      height: 100%;
+
+      /* No margin */
+      margin: 0;
+
+      /* The image used */
+      background-image: url("/images/home-bg.svg");
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Transparent header and tabs */
+    .md-header {
+      background-color: transparent;
+    }
+
+    .md-tabs {
+      background-color: transparent;
+    }
+
+    {% block main_style %}
+      .md-main {
+        background-color: white;
+      }
+    {% endblock %}
+  </style>
+{% endblock %}
