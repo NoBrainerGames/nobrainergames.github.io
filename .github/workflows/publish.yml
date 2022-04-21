@@ -1,0 +1,26 @@
+name: Publishing
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [staging]
+
+concurrency:
+  group: publishing-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  github_pages:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install mkdocs
+      run: |
+        pip install mkdocs-material
+    - name: Deploy site
+      run: mkdocs gh-deploy --force
