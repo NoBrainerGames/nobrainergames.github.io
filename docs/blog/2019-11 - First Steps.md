@@ -28,14 +28,62 @@ Swift with the Elements framework was an exciting prospect for me after pivoting
 
 Haxe was the next cab off the ranks. Its many backends boggled the mind, and I dreamt of making a game engine that could easily target every major platform in existence with it. In fact, the creator of the language had already made multiple [games with it](https://haxe.org/use-cases/games/)! After writing a few throw-away programs, however, I found the inconsistencies in the language too glaring for my tastes. It presented many ways to do things in a manner too similar to C++, probably due to the requirements imposed upon it by its numerous backends and maintainers. I was also spoiled by the power of metaprogramming in D, and Haxe seemed to have some limitations in comparison.
 
-Rust stood out to me due to its syntactical similarities to Swift, but I ended up not liking it due to the mental challenges its borrow checker presented to my feeble brain. I had been searching for a language that struck a good balance between cognitive simplicity and type safety, but I found that Rust's approach leaned too heavily on the safety aspect for my purposes. It also had limited interop with C++, which greatly reduced the pool of tools and libraries I could access despite its rapidly growing community.
+Rust stood out to me due to its syntactical similarities to Swift, but I ended up not liking it due to the challenges its borrow checker presented to my feeble brain. I had been searching for a language that struck a good balance between cognitive simplicity and type safety, but I found that Rust's approach leaned too heavily on the safety aspect for my purposes. It also had limited interop with C++, which greatly reduced the pool of tools and libraries I could access despite its rapidly growing community.
 
 I first encountered Nim when I happened to read a post in the D forums mentioning its C++ interop capabilities. At the time I had a strong preference for curly-brace syntax owing to my history with C-based languages, so I put this language at the very bottom of the pile. But after 8 months of experimenting with other languages and getting nowhere, I decided to give it a fair shot.
+
+
+```nim
+import std/strformat
+
+type
+  Person = object
+    name: string
+    age: Natural # Ensures the age is positive
+
+let people = [
+  Person(name: "John", age: 45),
+  Person(name: "Kate", age: 30)
+]
+
+for person in people:
+  # Type-safe string interpolation,
+  # evaluated at compile time.
+  echo(fmt"{person.name} is {person.age} years old")
+
+
+# Thanks to Nim's 'iterator' and 'yield' constructs,
+# iterators are as easy to write as ordinary
+# functions. They are compiled to inline loops.
+iterator oddNumbers[Idx, T](a: array[Idx, T]): T =
+  for x in a:
+    if x mod 2 == 1:
+      yield x
+
+for odd in oddNumbers([3, 6, 9, 12, 15, 18]):
+  echo odd
+
+
+# Use Nim's macro system to transform a dense
+# data-centric description of x86 instructions
+# into lookup tables that are used by
+# assemblers and JITs.
+import macros, strutils
+
+macro toLookupTable(data: static[string]): untyped =
+  result = newTree(nnkBracket)
+  for w in data.split(';'):
+    result.add newLit(w)
+
+const
+  data = "mov;btc;cli;xor"
+  opcodes = toLookupTable(data)
+
+for o in opcodes:
+  echo o
+```
+<sup>The above snippet is a peek into Nim's elegance.</sup>
 
 I soon found a way to like Nim's syntax, and once that was out of mind, I began to delve deeper into the language. I figured out that Nim could compile into C++, which lead to a theory: if Nim could interact with C++ at the source level instead of the ABI level like D did, maybe it could overcome the limitations of the other languages.
 
 6 months later, I had a working Nim wrapper for Diligent Engine.
-
-
-```nim
-```
