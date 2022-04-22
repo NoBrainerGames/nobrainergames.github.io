@@ -32,7 +32,7 @@ Haxe was the next cab off the ranks. Its many backends boggled the mind, and I d
 
 Rust stood out to me due to its syntactical similarities to Swift, but I ended up not liking it due to the challenges its [borrow checker](https://doc.rust-lang.org/1.8.0/book/references-and-borrowing.html) presented to my feeble brain. I had been searching for a language that struck a good balance between cognitive simplicity and type safety, but I found that Rust's approach leaned too heavily on the safety aspect for my purposes. It also had limited interop with C++, which greatly reduced the pool of tools and libraries I could access despite its rapidly growing community.
 
-I first encountered Nim when I happened to read a post in the D forums mentioning its C++ interop capabilities. At the time I had a strong preference for curly-brace syntax owing to my history with C-based languages, so I put this language at the very bottom of the pile. But after 8 months of experimenting with other languages and getting nowhere, I finally decided to give it a fair shot.
+I first encountered Nim when I happened to read [a post in the D forums](https://forum.dlang.org/post/nofiznstdspaechomlnr@forum.dlang.org) mentioning its C++ interop capabilities. At the time I had a strong preference for curly-brace syntax owing to my history with C-based languages, so I put this language at the very bottom of the pile. But after 8 months of experimenting with other languages and getting nowhere, I finally decided to give it a fair shot.
 
 
 ```nim
