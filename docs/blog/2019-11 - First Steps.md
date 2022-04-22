@@ -14,7 +14,9 @@ The answer was that C++ was too complex for me to create a non-trivial system fr
 
 Fortunately I stumbled on communities and languages that sought to overcome similar challenges, the D community being one of them.
 
-Other than D, I found that the [Haxe](https://haxe.org/) and [Rust](https://www.rust-lang.org/) communities were exhibiting rapid growth in the game programming space. I also considered using Swift outside of the Apple ecosystem, which presented some interesting possibilities given its compatibility with Objective-C. The following is the list of languages and frameworks I seriously investigated:
+Other than D, I found that the [Haxe](https://haxe.org/) and [Rust](https://www.rust-lang.org/) communities were exhibiting rapid growth in the game programming space. I also considered using Swift outside of the Apple ecosystem, which presented some interesting possibilities.
+
+The following is the list of languages and frameworks I seriously investigated:
 
 * D
 * Swift via the [Elements](https://www.remobjects.com/elements/) framework
@@ -24,7 +26,7 @@ Other than D, I found that the [Haxe](https://haxe.org/) and [Rust](https://www.
 
 I was overjoyed when I finished porting [this Vulkan tutorial](https://vulkan-tutorial.com/) to D, which proved that the language was indeed one of the best languages to interface with existing C++ code. However, I soon found that it had severe limitations when interfacing with metaprogramming-heavy C++ libraries like STL and boost. I eventually gave up on D after failing to port the [Diligent Engine](https://github.com/DiligentGraphics/DiligentEngine) library, which I had planned to use as the graphics backend for the engine. I still keep an eye on the language in the hopes that I would eventually be able to [include header files in D](https://github.com/atilaneves/dpp).
 
-Swift with the Elements framework was an exciting prospect for me after pivoting from D. Its compatibility with the JVM and .NET opened new doors in terms of the sheer number of resources and code I could tap into. Unfortunately I found it too difficult to set up on my systems without resorting to a paid version of the framework, so I moved on to other options.
+Swift with the Elements framework was an exciting prospect for me after pivoting from D. Its compatibility with the JVM and .NET opened new doors in terms of the sheer number of resources and code I could tap into. Unfortunately I found it too difficult to set up and run on my systems without resorting to a paid version of the framework, so I moved on to other options.
 
 Haxe was the next cab off the ranks. Its many backends boggled the mind, and I dreamt of making a game engine that could easily target every major platform in existence with it. In fact, the creator of the language had already made multiple [games with it](https://haxe.org/use-cases/games/)! After writing a few throw-away programs, however, I found the inconsistencies in the language too glaring for my tastes. It presented many ways to do things in a manner too similar to C++, probably due to the requirements imposed upon it by its numerous backends and maintainers. I was also spoiled by the power of metaprogramming in D, and Haxe seemed to have some limitations in comparison.
 
