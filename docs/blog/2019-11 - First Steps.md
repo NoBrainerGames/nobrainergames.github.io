@@ -26,7 +26,7 @@ I was overjoyed when I finished porting [this Vulkan tutorial](https://vulkan-tu
 
 Swift with the Elements framework was an exciting prospect for me after pivoting from D. Its compatibility with the JVM and .NET opened new doors in terms of the sheer number of resources and code I could tap into. Unfortunately I found it too difficult to set up on my systems without resorting to a paid version of the framework, so I moved on to other options.
 
-Haxe was the next cab off the ranks. Its many backends boggled the mind, and I dreamt of making a game engine that could easily target every major platform in existence with it. In fact, the creator of the language had already made multiple [games with it](https://haxe.org/use-cases/games/)! After writing a few throw-away programs, however, I found the inconsistencies in the language too glaring to ignore. It presented many ways to do things in a manner too similar to C++, probably due to the requirements imposed upon it by its numerous backends. I was also spoiled by the power of metaprogramming in D, and Haxe seemed to have some limitations in comparison.
+Haxe was the next cab off the ranks. Its many backends boggled the mind, and I dreamt of making a game engine that could easily target every major platform in existence with it. In fact, the creator of the language had already made multiple [games with it](https://haxe.org/use-cases/games/)! After writing a few throw-away programs, however, I found the inconsistencies in the language too glaring for my tastes. It presented many ways to do things in a manner too similar to C++, probably due to the requirements imposed upon it by its numerous backends and maintainers. I was also spoiled by the power of metaprogramming in D, and Haxe seemed to have some limitations in comparison.
 
 Rust stood out to me due to its syntactical similarities to Swift, but I ended up not liking it due to the mental challenges its borrow checker presented to my feeble brain. I had been searching for a language that struck a good balance between cognitive simplicity and type safety, but I found that Rust's approach leaned too heavily on the safety aspect for my purposes. It also had limited interop with C++, which greatly reduced the pool of tools and libraries I could access despite its rapidly growing community.
 
@@ -35,3 +35,7 @@ I first encountered Nim when I happened to read a post in the D forums mentionin
 I soon found a way to like Nim's syntax, and once that was out of mind, I began to delve deeper into the language. I figured out that Nim could compile into C++, which lead to a theory: if Nim could interact with C++ at the source level instead of the ABI level like D did, maybe it could overcome the limitations of the other languages.
 
 6 months later, I had a working Nim wrapper for Diligent Engine.
+
+
+```nim
+```
