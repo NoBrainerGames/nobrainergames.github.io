@@ -1,5 +1,5 @@
 ---
-title: 2019-01 - The Beginning
+title: The Beginning
 publish: blog/
 ---
 
