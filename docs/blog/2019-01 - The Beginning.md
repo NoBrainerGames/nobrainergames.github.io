@@ -6,7 +6,7 @@ publish: blog/
 
 The year 2019 was a year of learning for me.
 
-Just before COVID-19 hit Australia, my interest in programming languages was rekindled. As an iOS developer, I loved the elegance of Swift and was interested in discovering more languages like it. Was there another programming language out there that was as elegant and expressive as Swift? That question kept me up late at night.
+Just before COVID-19 hit Australia, my interest in programming languages was rekindled. As an iOS developer, I loved the elegance of [Swift](https://www.swift.org/) and was interested in discovering more languages like it. Was there another programming language out there that was as elegant and expressive as Swift? That question kept me up late at night.
 
 Prior to Australia, my background in programming went as far as writing tiny C and assembly programs as a student. I experimented with scripting languages like Perl and Python during my free time by implementing software robots that could play online games for me. Before graduating, I discovered Objective-C when I delved into iOS application programming for my first startup. I was amazed by the flexibility of that language; the run-time metaprogramming facilities of Objective-C combined with C macros seemed to provide me with endless ways to express logic and even more ways to shoot myself in the foot. In fact, I enjoyed writing horribly obfuscated metaprograms so much that I made a freelance developer cry from the agony of trying to understand my code.
 
