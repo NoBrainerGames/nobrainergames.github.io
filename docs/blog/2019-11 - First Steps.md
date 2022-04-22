@@ -8,11 +8,11 @@ The first challenge was interfacing with C++.
 
 Even though I had taken a liking to the D programming language, I continued my search for the best tools to use for developing the game engine. I realized that I simply did not have enough time to implement every aspect of the engine from scratch, so I needed to interface with existing libraries that I could glue together. It didn't take long for me to find out that C++ was king when it came to game engines.
 
-So I asked myself: why not just use C++? I did have some experience with C++ due my work on VR interfaces in [Unreal Engine](https://www.unrealengine.com/en-US/). I even learned the fundamentals of object-oriented programming by reading a book about [how to program in C++](https://www.goodreads.com/book/show/115703.C_). So why look for another language just to end up having to use C++ to a large capacity anyway?
+So I asked myself: why not just use C++ directly? I did have some experience with C++ due my work on VR interfaces in [Unreal Engine](https://www.unrealengine.com/en-US/). I even learned the fundamentals of object-oriented programming by reading a book about [how to program in C++](https://www.goodreads.com/book/show/115703.C_). So why look for another language just to end up having to use C++ to a large capacity anyway?
 
 The answer was that C++ was too complex for me to create a non-trivial system from scratch with. I simply did not have enough experience with it to implement a massive C++ codebase by myself; especially one that would eventually be worked on by other people. I was missing the intricacies of the language and knowledge of best practices that came with years of experience working in large game development teams.
 
-Fortunately I stumbled on communities and languages that sought to overcome similar challenges, the D community being one of them.
+It was for I stumbled on communities and languages that sought to overcome similar challenges, the D community being one of them.
 
 Other than D, I found that the [Haxe](https://haxe.org/) and [Rust](https://www.rust-lang.org/) communities were exhibiting rapid growth in the game programming space. I also considered using Swift outside of the Apple ecosystem, which presented some interesting possibilities.
 

@@ -14,7 +14,7 @@ A few years and two iOS app development jobs went by before Apple officially rel
 
 Still, I missed being able to write code that could create more code.
 
-I began experimenting with the [D programming language](https://dlang.org/) after I moved down under. I had encountered it before while researching obscure programming languages, but I had never really implemented anything with it. I was hooked as soon as I understood what it was capable of: D supported high-level programming constructs like a scripting language while still being able to drill down to the bit level. It accomplished this by leveraging its powerful metaprogramming facilities. It was like a better version of C, and could even interop with C++!
+I began experimenting with the [D programming language](https://dlang.org/) after I moved to the land down under. I had previously encountered the language while researching obscure programming languages, but I had never really implemented anything with it. I was hooked as soon as I understood what it was capable of: D supported high-level programming constructs like a scripting language while still being able to drill down to the bit level. It accomplished this by leveraging its powerful metaprogramming facilities. It was like a better version of C, and could even interop with C++!
 
 
 ```d
@@ -38,6 +38,6 @@ void main()
 
 I quickly developed a hunger to find a project to implement with it.
 
-It turned out that just before I moved to Australia, I had worked as a contractor in a research project to build human interfaces for virtual reality games. This experience gave me the idea that I wanted to write a game engine that would put virtual reality at the forefront of the game development process.
+It turned out that just before I moved to Australia, I had worked as a contractor in a research project to build human interfaces for virtual reality games. This experience planted a seed that drove me to write a game engine that would put virtual reality at the forefront of the game development process.
 
 And so I began to work towards implementing a prototype game engine. Looking back, I'm not sure I knew exactly how hard it was going to be.
