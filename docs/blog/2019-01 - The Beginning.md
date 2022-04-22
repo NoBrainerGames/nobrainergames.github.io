@@ -14,7 +14,25 @@ A few years and two iOS app development jobs went by before Apple officially rel
 
 Still, I missed being able to write code that could create more code.
 
-I began experimenting with the [D programming language]([Home - D Programming Language (dlang.org)](https://dlang.org/)) after I moved down under. I had encountered it before while researching obscure programming languages, but I had never really implemented anything with it. I was hooked as soon as I understood what it could do: D could support high-level programming constructs like a scripting language while still being able to drill down to the bit level by leveraging its powerful metaprogramming facilities. It was like a better version of C, and could even interop with C++! I quickly developed a hunger to find a project to implement with it.
+I began experimenting with the [D programming language](https://dlang.org/) after I moved down under. I had encountered it before while researching obscure programming languages, but I had never really implemented anything with it. I was hooked as soon as I understood what it could do: D could support high-level programming constructs like a scripting language while still being able to drill down to the bit level by leveraging its powerful metaprogramming facilities. It was like a better version of C, and could even interop with C++! I quickly developed a hunger to find a project to implement with it.
+
+```d
+void main()
+{
+    import std.range, std.stdio;
+
+    auto sum = 0.0;
+    auto count = stdin
+        //Get an input range set up to read one line at a time
+        .byLine
+        //Perform a transparent operation (as in the shell command tee)
+        .tee!(l => sum += l.length)
+        .walkLength;
+
+    writeln("Average line length: ",
+        count ? sum / count : 0);
+}
+```
 
 It turned out that just before I moved to Australia, I had worked as a contractor in a research project to build human interfaces for virtual reality games. This experience gave me the idea that I wanted to write a game engine that would put virtual reality at the forefront of the game development process.
 
