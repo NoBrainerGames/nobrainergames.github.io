@@ -40,4 +40,4 @@ I quickly developed a hunger to find a project to implement with it.
 
 It turned out that just before I moved to Australia, I had worked as a contractor in a research project to build human interfaces for virtual reality games. This experience gave me the idea that I wanted to write a game engine that would put virtual reality at the forefront of the game development process.
 
-And so I began work on implementing a prototype game engine. Looking back, I'm not sure I knew exactly how hard it was going to be.
+And so I began to work towards implementing a prototype game engine. Looking back, I'm not sure I knew exactly how hard it was going to be.
