@@ -88,4 +88,4 @@ for o in opcodes:
 
 I soon found a way to like Nim's syntax, and once that was out of mind, I began to delve deeper into the language. I figured out that Nim could compile into C++, which lead to a theory: if Nim could interact with C++ at the source level instead of the ABI level like D did, maybe it could overcome the limitations of the other languages.
 
-6 months later, I had a working Nim wrapper for Diligent Engine.
+3 months later, I had a working Nim wrapper for Diligent Engine.
