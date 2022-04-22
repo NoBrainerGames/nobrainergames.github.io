@@ -1,6 +1,6 @@
 ---
 title: The Beginning
-template: blog.html
+template: comments.html
 publish: blog/
 ---
 
