@@ -16,6 +16,7 @@ Still, I missed being able to write code that could create more code.
 
 I began experimenting with the [D programming language](https://dlang.org/) after I moved down under. I had encountered it before while researching obscure programming languages, but I had never really implemented anything with it. I was hooked as soon as I understood what it could do: D could support high-level programming constructs like a scripting language while still being able to drill down to the bit level by leveraging its powerful metaprogramming facilities. It was like a better version of C, and could even interop with C++!
 
+
 ```d
 void main()
 {
@@ -33,7 +34,7 @@ void main()
         count ? sum / count : 0);
 }
 ```
-*The snippet above is a taste of the powerful simplicity of D.*
+<sup>The snippet above is a taste of the powerful simplicity of D.</sup>
 
 I quickly developed a hunger to find a project to implement with it.
 
