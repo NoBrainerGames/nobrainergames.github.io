@@ -1,6 +1,6 @@
 ---
 title: The Beginning
-template: overrides/blog.html
+template: blog.html
 publish: blog/
 ---
 
