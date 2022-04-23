@@ -8,7 +8,7 @@ The first challenge was interfacing with C++.
 
 Even though I had taken a liking to the D programming language, I continued my search for the best tools to use for developing the game engine. I realized that I simply did not have enough time to implement every aspect of the engine from scratch, so I needed to interface with existing libraries that I could glue together. It didn't take long for me to find out that C++ was [king when it came to game engines](https://github.com/search?q=game+engine).
 
-So I asked myself: why not just use C++ directly? I did have some experience with C++ due my work on VR interfaces in [Unreal Engine](https://www.unrealengine.com/en-US/). I even learned the fundamentals of object-oriented programming by reading a book about [how to program in C++](https://www.goodreads.com/book/show/115703.C_). So why look for another language just to end up having to use C++ to a large capacity anyway?
+So I asked myself: why not just use C++ directly? I did have some experience with C++ when I worked on VR interfaces using [Unreal Engine](https://www.unrealengine.com/en-US/). I even learned the fundamentals of object-oriented programming by reading a book about [how to program in C++](https://www.goodreads.com/book/show/115703.C_). So why look for another language just to end up having to use C++ to a large capacity anyway?
 
 The answer was that C++ was too complex for me to create a non-trivial system from scratch with. I simply did not have enough experience with it to implement a massive C++ codebase by myself; especially one that would eventually be worked on by other people. I was missing the intricacies of the language and knowledge of best practices that came with years of experience working in large game development teams.
 
@@ -86,6 +86,6 @@ for o in opcodes:
 ```
 <sup>The above snippet is a peek into Nim's elegance.</sup>
 
-I soon found a way to like Nim's syntax, and once that was out of mind, I began to delve deeper into the language. I figured out that Nim could compile into C++, which lead to a theory: if Nim could interact with C++ at the source level instead of the ABI level like D did, maybe it could overcome the limitations of the other languages with the help of its epic metaprogramming chops.
+I soon found a way to like Nim's syntax, and once that was out of mind, I began to delve deeper into the language. I figured out that Nim could compile into C++, which led to a theory: if Nim could interact with C++ at the source level instead of the ABI level like D did, maybe it could overcome the limitations of the other languages with the help of its epic metaprogramming chops.
 
 3 months later, I had a working Nim wrapper for Diligent Engine.
