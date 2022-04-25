@@ -1,5 +1,6 @@
 ---
 publish: blog/musings/
+template: comments.html
 ---
 
 The Nephilim were the first intelligent creatures to appear in the universe. They are not in fact a single race as most modern-day scholars believe, but two; evolving in tandem from the creatures of the binary planet system now known as The Whitespace.
