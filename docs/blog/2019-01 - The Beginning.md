@@ -1,7 +1,7 @@
 ---
 title: The Beginning
-template: comments.html
 publish: blog/
+template: comments.html
 ---
 
 The year 2019 was a year of learning for me.

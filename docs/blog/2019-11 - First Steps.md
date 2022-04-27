@@ -1,12 +1,12 @@
 ---
 title: First Steps
-template: comments.html
 publish: blog/
+template: comments.html
 ---
 
 The first challenge was interfacing with C++.
 
-Even though I had taken a liking to the D programming language, I continued my search for the best tools to use for developing the game engine. I realized that I simply did not have enough time to implement every aspect of the engine from scratch, so I needed to interface with existing libraries that I could glue together. It didn't take long for me to find out that C++ is [king when it comes to game engines](https://github.com/search?q=game+engine).
+Even though I had taken a liking to the D programming language, I continued my search for the best tools to use for developing the game engine. I realized that I simply did not have enough time to implement every aspect of the engine from scratch, so I needed to interface with existing libraries that I could glue together. It didn't take long for me to find out that [C++ is king when it comes to game engines](https://github.com/search?q=game+engine).
 
 So I asked myself: why not just use C++ directly? I did have some experience with C++ when I worked on VR interfaces using [Unreal Engine](https://www.unrealengine.com/en-US/). I even learned the fundamentals of object-oriented programming by reading a book about [how to program in C++](https://www.goodreads.com/book/show/115703.C_). So why look for another language just to end up having to use C++ to a large capacity anyway?
 

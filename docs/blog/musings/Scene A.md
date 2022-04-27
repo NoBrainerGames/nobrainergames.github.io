@@ -1,5 +1,6 @@
 ---
 publish: blog/musings/
+template: comments.html
 ---
 
 Raith quivered like a leaf. He was huddled behind a boulder; virtually the only one in the expansive grassland.

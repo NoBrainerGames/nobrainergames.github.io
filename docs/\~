@@ -1,0 +1,12 @@
+---
+title: September 2020
+publish: ~
+template: comments.html
+---
+```button  
+name Publish
+type line(3) text
+action publish: blog/
+replace [3,3]
+remove true
+```
