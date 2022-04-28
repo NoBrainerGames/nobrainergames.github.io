@@ -1,20 +1,9 @@
 {% extends "main.html" %}
 
-{% block main_style %}
-  .md-main {
-    background-color: transparent;
-  }
-{% endblock %}
-
 {% block tabs %}
   {{ super() }}
 
   <style>
-     /* Application header should be static for the landing page */
-    .md-header {
-      position: initial;
-    }
-
     /* Remove spacing, as we cannot hide it completely */
     .md-main__inner {
       margin: 0;
@@ -23,6 +12,11 @@
     /* Hide main content for now */
     .md-content {
       display: none;
+    }
+
+    /* Show background image */
+    .md-main {
+      background-color: transparent;
     }
 
     /* Hide table of contents */

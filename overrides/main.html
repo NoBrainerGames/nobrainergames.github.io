@@ -24,26 +24,23 @@
 
     /* Transparent header and tabs */
     .md-header {
-      /* The image used */
-      background-image: url("/images/home-bg.svg");
+      background-color: transparent;
+      z-index: 0;
+    }
 
-      /* Center and scale the image nicely */
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    .md-header[data-md-state="shadow"] {
+      box-shadow: none;
     }
 
     .md-tabs {
       background-color: transparent;
     }
 
-    {% block main_style %}
-      .md-main {
-        background-color: var(--md-default-bg-color);
-        border-top-left-radius: 24px;
-        border-top-right-radius: 24px;
-      }
-    {% endblock %}
+    .md-main {
+      background-color: var(--md-default-bg-color);
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      z-index: 4;
+    }
   </style>
 {% endblock %}
