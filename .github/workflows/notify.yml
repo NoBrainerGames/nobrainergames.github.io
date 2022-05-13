@@ -69,6 +69,6 @@ jobs:
 
           curl -H "Content-Type: application/json" -d \
             "{\"username\": \"No Brainer Games\",\
-              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\n$TITLE_URL\"} \
+              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\n$TITLE_URL\"}" \
             "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
         fi
