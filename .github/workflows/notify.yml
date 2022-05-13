@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Check updates
       run: |
         DAY_OFFSET=15
@@ -22,9 +24,9 @@ jobs:
         TODAY_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_TODAY 00:00:00" staging)
         PREVIOUS_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_YESTERDAY 00:00:00" staging)
 
-        echo "Checking files changed between $PREVIOUS_COMMIT and $TODAY_COMMIT..."
-
         if [ ! -z "$TODAY_COMMIT" ]; then
+          echo "Checking files changed between $PREVIOUS_COMMIT and $TODAY_COMMIT..."
+
           ADDED_FILES=$(git diff --name-only --diff-filter=A $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
           MODIFIED_FILES=$(git diff --name-only --diff-filter=M $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
 
@@ -57,9 +59,9 @@ jobs:
               MODIFIED_COUNT=$((MODIFIED_COUNT+1))
             fi
           done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
-        fi
 
-        echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
+          echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
+        fi
     - name: Notify Discord
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
