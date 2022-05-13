@@ -64,19 +64,12 @@ jobs:
           echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
 
           echo "DID_UPDATE=true" >> $GITHUB_ENV
-          echo "NOTE_DESC=\"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\"" >> $GITHUB_ENV
+          echo "NOTE_DESC=\"\"" >> $GITHUB_ENV
           echo "NOTE_URL=\"$TITLE_URL\"" >> $GITHUB_ENV
+
+          curl -H "Content-Type: application/json" -d \
+            "{\"username\": \"No Brainer Games\",\
+              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\",\
+              \"embeds\": [{ \"title\": \"New content\", \"url\": \"$TITLE_URL\" }]}" \
+            "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
         fi
-    - name: Notify Discord
-      if: env.DID_UPDATE == 'true'
-      env:
-        DISCORD_WEBHOOK: "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}/github"
-        DISCORD_USERNAME: "No Brainer Games"
-        DISCORD_EMBEDS: |
-          [
-            {
-              "title": "New update",
-              "url": ${{ env.NOTE_URL }}
-            }
-          ]
-      uses: Ilshidur/action-discord@0.3.2
