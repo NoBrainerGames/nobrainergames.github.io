@@ -64,7 +64,7 @@ jobs:
           echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
 
           echo "DID_UPDATE=true" >> $GITHUB_ENV
-          echo 'NOTE_DESC="Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages."' >> $GITHUB_ENV
+          echo "NOTE_DESC=\"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\"" >> $GITHUB_ENV
           echo "NOTE_URL=\"$TITLE_URL\"" >> $GITHUB_ENV
         fi
     - name: Notify Discord
@@ -75,9 +75,6 @@ jobs:
         DISCORD_EMBEDS: |
           {
             "embeds": [
-              {
-                "description": "${{ env.NOTE_DESC }}"
-              },
               {
                 "title": "New update",
                 "url": "${{ env.NOTE_URL }}"
