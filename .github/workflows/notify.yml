@@ -2,6 +2,8 @@ name: Notifying
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
 
 concurrency:
   group: notifying-${{ github.ref }}
@@ -17,7 +19,7 @@ jobs:
         fetch-depth: 0
     - name: Post updates
       run: |
-        DAY_OFFSET=15
+        DAY_OFFSET=0
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
         DATE_YESTERDAY=$(date --date="$((-$DAY_OFFSET - 1)) day" +'%Y-%m-%d')
 
@@ -65,6 +67,6 @@ jobs:
 
           curl -H "Content-Type: application/json" -d \
             "{\"username\": \"No Brainer Games\",\
-              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\n$TITLE_URL\"}" \
+              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\n\n$TITLE_URL\"}" \
             "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
         fi
