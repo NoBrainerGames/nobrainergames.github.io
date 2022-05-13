@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0
     - name: Post updates
       run: |
-        DAY_OFFSET=0
+        DAY_OFFSET=15
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
         DATE_YESTERDAY=$(date --date="$((-$DAY_OFFSET - 1)) day" +'%Y-%m-%d')
 
@@ -32,41 +32,44 @@ jobs:
           ADDED_FILES=$(git diff --name-only --diff-filter=A $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
           MODIFIED_FILES=$(git diff --name-only --diff-filter=M $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
 
-          ADDED_COUNT=0
-          MODIFIED_COUNT=0
-
-          TITLE_URL=
+          ADDED_JSONS=()
+          MODIFIED_JSONS=()
 
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
-              if [ $ADDED_COUNT -eq 0 ]; then
-                FILEPATH=${filename#"docs/"}
-                FILEPATH=${FILEPATH%".md"}
-                FILEPATH=${FILEPATH/ /"%20"}
-                TITLE_URL="https://nobrainergames.com/$FILEPATH/"
-              fi
-              ADDED_COUNT=$((ADDED_COUNT+1))
+              FILEPATH=${filename#"docs/"}
+              FILEPATH=${FILEPATH%".md"}
+              FILEPATH=${FILEPATH/ /"%20"}
+              TITLE=$(basename filename)
+              TITLE=${TITLE%".md"}
+              URL="https://nobrainergames.com/$FILEPATH/"
+              ADDED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
             fi
           done < <(printf "%s\0" "$ADDED_FILES" | tr "\n" "\0")
 
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
-              if [ $ADDED_COUNT -eq 0 ]; then
-                if [ $MODIFIED_COUNT -eq 0 ]; then
-                  FILEPATH=${filename#"docs/"}
-                  FILEPATH=${FILEPATH%".md"}
-                  FILEPATH=${FILEPATH/ /"%20"}
-                  TITLE_URL="https://nobrainergames.com/$FILEPATH/"
-                fi
-              fi
-              MODIFIED_COUNT=$((MODIFIED_COUNT+1))
+              FILEPATH=${filename#"docs/"}
+              FILEPATH=${FILEPATH%".md"}
+              FILEPATH=${FILEPATH/ /"%20"}
+              TITLE=$(basename filename)
+              TITLE=${TITLE%".md"}
+              URL="https://nobrainergames.com/$FILEPATH/"
+              MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
             fi
           done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
 
-          echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
+          echo "Found ${#ADDED_JSONS[@]} added files and ${#MODIFIED_JSONS[@]} modified files."
+
+          ALL_JSONS=(${ADDED_JSONS[@]})
+          ALL_JSONS+=(${MODIFIED_JSONS[@]})
+
+          EMBEDS=$(printf ",%s", "${ALL_JSONS[@]}")
+          EMBEDS=${EMBEDS:1}
 
           curl -H "Content-Type: application/json" -d \
             "{\"username\": \"No Brainer Games\",\
-              \"content\": \"Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages.\n\n$TITLE_URL\"}" \
+              \"content\": \"Published ${#ADDED_JSONS[@]} new pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
+              \"embeds\": $EMBEDS}" \
             "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
         fi
