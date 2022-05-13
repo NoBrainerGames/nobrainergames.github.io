@@ -39,10 +39,10 @@ jobs:
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
               if [ $ADDED_COUNT -eq 0 ]; then
-                PATH=${filename#"docs/"}
-                PATH=${PATH%".md"}
-                PATH=${PATH/ /"%20"}
-                ADDED_URL="nobrainergames.com/$PATH/"
+                FILEPATH=${filename#"docs/"}
+                FILEPATH=${FILEPATH%".md"}
+                FILEPATH=${FILEPATH/ /"%20"}
+                ADDED_URL="nobrainergames.com/$FILEPATH/"
               fi
               ADDED_COUNT=$((ADDED_COUNT+1))
             fi
@@ -51,10 +51,10 @@ jobs:
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
               if [ $MODIFIED_COUNT -eq 0 ]; then
-                PATH=${filename#"docs/"}
-                PATH=${PATH%".md"}
-                PATH=${PATH/ /"%20"}
-                MODIFIED_URL="nobrainergames.com/$PATH/"
+                FILEPATH=${filename#"docs/"}
+                FILEPATH=${FILEPATH%".md"}
+                FILEPATH=${FILEPATH/ /"%20"}
+                MODIFIED_URL="nobrainergames.com/$FILEPATH/"
               fi
               MODIFIED_COUNT=$((MODIFIED_COUNT+1))
             fi
