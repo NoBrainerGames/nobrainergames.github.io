@@ -74,13 +74,13 @@ jobs:
         DISCORD_USERNAME: "No Brainer Games"
         DISCORD_EMBEDS: |
           {
-            \\"embeds\\": [
+            "embeds": [
               {
-                \\"description\\": \\"${{ env.NOTE_DESC }}\\"
+                "description": \"${{ env.NOTE_DESC }}\"
               },
               {
-                \\"title\\": \\"New update\\",
-                \\"url\\": \\"${{ env.NOTE_URL }}\\"
+                "title": \"New update\",
+                "url": \"${{ env.NOTE_URL }}\"
               }
             ]
           }
