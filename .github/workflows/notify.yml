@@ -64,10 +64,10 @@ jobs:
           ALL_JSONS=(${ADDED_JSONS[@]})
           ALL_JSONS+=(${MODIFIED_JSONS[@]})
 
-          EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
+          EMBEDS=$(IFS=, ; echo "${ADDED_JSONS[*]}")
 
           BODY="{\"username\": \"No Brainer Games\",\
-            \"content\": \"Published ${#ADDED_JSONS[@]} pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
+            \"content\": \"Published ${#ADDED_JSONS[@]} pages and updated ${#MODIFIED_JSONS[@]} pages.\",\
             \"embeds\": [$EMBEDS]}"
 
           echo "Sending payload '$BODY' to Discord server..."
