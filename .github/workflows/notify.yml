@@ -1,0 +1,67 @@
+name: Notifying
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: notifying-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Check updates
+      run: |
+        DAY_OFFSET=15
+        DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
+        DATE_YESTERDAY=$(date --date="$((-$DAY_OFFSET - 1)) day" +'%Y-%m-%d')
+
+        TODAY_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_TODAY 00:00:00" staging)
+        PREVIOUS_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_YESTERDAY 00:00:00" staging)
+
+        echo "Checking files changed between $PREVIOUS_COMMIT and $TODAY_COMMIT..."
+
+        if [ ! -z "$TODAY_COMMIT" ]; then
+          ADDED_FILES=$(git diff --name-only --diff-filter=A $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
+          MODIFIED_FILES=$(git diff --name-only --diff-filter=M $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
+
+          ADDED_COUNT=0
+          MODIFIED_COUNT=0
+
+          ADDED_URL=
+          MODIFIED_URL=
+
+          while IFS='' read -r -d '' filename; do
+            if [ -f "$filename" ]; then
+              if [ $ADDED_COUNT -eq 0 ]; then
+                PATH=${filename#"docs/"}
+                PATH=${PATH%".md"}
+                PATH=${PATH/ /"%20"}
+                ADDED_URL="nobrainergames.com/$PATH/"
+              fi
+              ADDED_COUNT=$((ADDED_COUNT+1))
+            fi
+          done < <(printf "%s\0" "$ADDED_FILES" | tr "\n" "\0")
+
+          while IFS='' read -r -d '' filename; do
+            if [ -f "$filename" ]; then
+              if [ $MODIFIED_COUNT -eq 0 ]; then
+                PATH=${filename#"docs/"}
+                PATH=${PATH%".md"}
+                PATH=${PATH/ /"%20"}
+                MODIFIED_URL="nobrainergames.com/$PATH/"
+              fi
+              MODIFIED_COUNT=$((MODIFIED_COUNT+1))
+            fi
+          done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
+        fi
+
+        echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
+    - name: Notify Discord
+      ENV:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
+        DISCORD_USERNAME: "No Brainer Games"
+      uses: Ilshidur/action-discord@0.3.2
