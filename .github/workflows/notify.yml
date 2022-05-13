@@ -66,8 +66,8 @@ jobs:
             EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
 
             BODY="{\"username\": \"No Brainer Games\",\
-                  \"content\": \"New content added to https://nobrainergames.com\",\
-              \"embeds\": [$EMBEDS]}"
+                   \"content\": \"New content added to https://nobrainergames.com\",\
+                   \"embeds\": [$EMBEDS]}"
 
             echo "Sending payload '$BODY' to Discord server..."
 
