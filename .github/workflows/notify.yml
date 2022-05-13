@@ -40,7 +40,7 @@ jobs:
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
               FILEPATH=${FILEPATH/ /"%20"}
-              TITLE=$(basename filename)
+              TITLE=$(basename "$filename")
               TITLE=${TITLE%".md"}
               URL="https://nobrainergames.com/$FILEPATH/"
               ADDED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
@@ -52,7 +52,7 @@ jobs:
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
               FILEPATH=${FILEPATH/ /"%20"}
-              TITLE=$(basename filename)
+              TITLE=$(basename "$filename")
               TITLE=${TITLE%".md"}
               URL="https://nobrainergames.com/$FILEPATH/"
               MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
@@ -67,7 +67,7 @@ jobs:
           EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
 
           BODY="{\"username\": \"No Brainer Games\",\
-            \"content\": \"Published ${#ADDED_JSONS[@]} new pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
+            \"content\": \"Published ${#ADDED_JSONS[@]} pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
             \"embeds\": [$EMBEDS]}"
 
           echo "Sending payload '$BODY' to Discord server..."
