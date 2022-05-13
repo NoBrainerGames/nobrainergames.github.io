@@ -73,15 +73,11 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
         DISCORD_USERNAME: "No Brainer Games"
         DISCORD_EMBEDS: |
-          {
-            "embeds": [
-              {
-                "description": ${{ env.NOTE_DESC }}
-              },
-              {
-                "title": "New update",
-                "url": ${{ env.NOTE_URL }}
-              }
-            ]
-          }
+          {[
+            {
+              "description": ${{ env.NOTE_DESC }},
+              "title": "New update",
+              "url": ${{ env.NOTE_URL }}
+            }
+          ]}
       uses: Ilshidur/action-discord@0.3.2
