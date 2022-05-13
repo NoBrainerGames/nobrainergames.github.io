@@ -64,8 +64,7 @@ jobs:
           ALL_JSONS=(${ADDED_JSONS[@]})
           ALL_JSONS+=(${MODIFIED_JSONS[@]})
 
-          EMBEDS=$(printf ",%s" "${ALL_JSONS[@]}")
-          EMBEDS=${EMBEDS:1}
+          EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
 
           BODY="{\"username\": \"No Brainer Games\",\
             \"content\": \"Published ${#ADDED_JSONS[@]} new pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
