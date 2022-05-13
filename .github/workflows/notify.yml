@@ -34,16 +34,17 @@ jobs:
 
           ADDED_JSONS=()
           MODIFIED_JSONS=()
+          ALL_JSONS=()
 
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
+              TITLE="$FILEPATH"
               FILEPATH=${FILEPATH/ /"%20"}
-              TITLE=$(basename "$filename")
-              TITLE=${TITLE%".md"}
               URL="https://nobrainergames.com/$FILEPATH/"
               ADDED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
+              ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
             fi
           done < <(printf "%s\0" "$ADDED_FILES" | tr "\n" "\0")
 
@@ -51,26 +52,25 @@ jobs:
             if [ -f "$filename" ]; then
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
+              TITLE="$FILEPATH"
               FILEPATH=${FILEPATH/ /"%20"}
-              TITLE=$(basename "$filename")
-              TITLE=${TITLE%".md"}
               URL="https://nobrainergames.com/$FILEPATH/"
               MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
+              ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
             fi
           done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
 
-          echo "Found ${#ADDED_JSONS[@]} added files and ${#MODIFIED_JSONS[@]} modified files."
+          MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
 
-          ALL_JSONS=(${ADDED_JSONS[@]})
-          ALL_JSONS+=(${MODIFIED_JSONS[@]})
+          if [ ${#ALL_JSONS[@]} -ne 0 ]; then
+            EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
 
-          EMBEDS=$(IFS=, ; echo "${ADDED_JSONS[*]}")
+            BODY="{\"username\": \"No Brainer Games\",\
+              \"content\": \"Published ${#ADDED_JSONS[@]} pages and updated ${#MODIFIED_JSONS[@]} pages.\",\
+              \"embeds\": [$EMBEDS]}"
 
-          BODY="{\"username\": \"No Brainer Games\",\
-            \"content\": \"Published ${#ADDED_JSONS[@]} pages and updated ${#MODIFIED_JSONS[@]} pages.\",\
-            \"embeds\": [$EMBEDS]}"
+            echo "Sending payload '$BODY' to Discord server..."
 
-          echo "Sending payload '$BODY' to Discord server..."
-
-          curl -H "Content-Type: application/json" -d "$BODY" "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
+            curl -H "Content-Type: application/json" -d "$BODY" "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
+          fi
         fi
