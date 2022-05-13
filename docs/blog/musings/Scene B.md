@@ -23,7 +23,7 @@ Seth had personally made sure every nook and cranny of the course was accounted 
 
 "I can't think of any possible way I could have missed it. I checked the surrounding areas..."
 
-"We will have the minor nobles breathing down our throats if YOU can't come up with a reason for these deaths!" the Vice President exploded.
+"We will have the minor nobles breathing down our necks if YOU can't come up with a reason for these deaths!" the Vice President exploded.
 
 The throbbing vein in the Vice President's temple came dangerously close to popping.
 
@@ -31,13 +31,13 @@ The throbbing vein in the Vice President's temple came dangerously close to popp
 
 Chairs creaked as the three others in the room turned to look at the young man. The president's son puffed up like a rooster, as if gracing them with his words.
 
-"there is that one survivor who miraculously escaped. Perhaps we can get something out of him to solve the issue of what we should report to the public."
+"there is that one survivor who miraculously escaped. Perhaps, we can get something out of him to solve the issue of what we should report to the public."
 
 *Another mystery. It shouldn't be possible for a recruit to escape a direwolf.*
 
-After a moment of consideration, Seth agreed.
+After a moment of consideration, Seth nodded.
 
-"Yes, perhaps he could recount the moment the creature appeared. I only hope that the boy is awake by now."
+"Yes, he may be able to recount the moment the creature appeared. He was certainly there. I only hope that the boy is awake by now."
 
 The more Seth thought about what he had seen, the less sense it made. Something in his memory nagged at him, a thought that eluded him the more he tried to remember.
 

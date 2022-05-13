@@ -9,11 +9,11 @@ Raith quivered like a leaf. He was huddled behind a boulder; virtually the only 
 
 The massive direwolf just beyond the boulder was eating. He could hear metal shattering as the creature chewed through the bodies -- equipment and all -- of two members of his troop. Fellow Scouts-in-training.
 
-This wasn't supposed to happen. This was supposed to be a simple reconnaissance exercise. The field instructors had definitely said that the worst they would encounter was a harpy, but those creatures tended to keep to themselves unless their nests were disturbed. And from what Raith knew of direwolves, they should have been in hibernation this time of the year. They were known to be active only during the winter. What had gone wrong?
+This wasn't supposed to happen. This was supposed to be a simple reconnaissance exercise. The field instructors had definitely said that the worst they would encounter was a harpy, but those creatures kept to themselves unless their nests were disturbed. And from what Raith knew of direwolves, they should have been in hibernation right now. They were known to be active only during the winter. What had gone wrong?
 
 *Fuck. Fuck, fuck, fuck! Kill it! How do I kill it?*
 
-Raith had nowhere to run, and that was metaphorically speaking. Even if he ran, the direwolf would be upon him before he could begin to utter a scream. Once the direwolf finished eating Raith's companions, its sense of smell would lead it right to his little nook in the boulder. That would be the end.
+Raith had nowhere to run, and that was metaphorically speaking. If he bolted right now, the direwolf would be upon him before he could begin to utter a scream. Once the direwolf finished eating Raith's companions, its sense of smell would lead it right to his little nook in the boulder. That would be the end.
 
 *Kill! KILL! Kill!*
 
@@ -39,7 +39,7 @@ Raith put all of his being into each stride. Every muscle in his body tensed to 
 
 But the direwolf's scalding breath still touched the back of his neck. It was the end.
 
-Raith watched -- rather than felt -- himself let go. There was nothing else to be done but to accept his fate. A part of him realized that the direwolf was simply a force of nature that he could not escape, even as his survival instincts drove his body to the brink. After all, nature always gets its way in the end.
+Raith watched -- rather than felt -- himself let go. There was nothing else to be done but to accept his fate. A part of him realized that the direwolf was simply a force of nature that he could not escape, even as survival instincts drove his body to the brink. After all, nature always gets its way in the end.
 
 He felt the piercing ice in his legs, the effects of lactic acid buildup taking its toll. But Raith didn't slow down.
 
@@ -49,4 +49,4 @@ He was going faster.
 
 The ground exploded at Raith's feet.
 
-His mind went blank as he was flung 30 paces into the air.
+His mind flatlined as he was flung 30 paces into the air.

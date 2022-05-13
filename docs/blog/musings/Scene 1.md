@@ -29,9 +29,9 @@ His breathing eventually stabilized. Like a corpse turning in its grave, Raith p
 
 The kid next to him was still on his back, one side of his face bruised and swollen. Past him was a larger figure. Mickey was bawling his eyes out in a fetal position. That was bad. Arnold wouldn't stand for that. A trickle of dread leaked into Raith's deadened heart.
 
-"Come on Mickey." he breathed.
+"Come on Mickey." he wheezed.
 
-Raith dragged himself to his feet and staggered to where Mickey was, managing to stumble over the unconscious kid. He reached down, took hold of Mickey's arm and gave it a feeble tug.
+Raith dragged himself to his feet and staggered to where Mickey was, managing to stumble over the unconscious kid on the way. He reached down, took hold of Mickey's arm and gave it a feeble tug.
 
 "We have to go...come on."
 
