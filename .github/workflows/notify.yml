@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Check updates
+    - name: Post updates
       run: |
         DAY_OFFSET=15
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
@@ -41,7 +41,7 @@ jobs:
                 FILEPATH=${filename#"docs/"}
                 FILEPATH=${FILEPATH%".md"}
                 FILEPATH=${FILEPATH/ /"%20"}
-                TITLE_URL="nobrainergames.com/$FILEPATH/"
+                TITLE_URL="https://nobrainergames.com/$FILEPATH/"
               fi
               ADDED_COUNT=$((ADDED_COUNT+1))
             fi
@@ -54,7 +54,7 @@ jobs:
                   FILEPATH=${filename#"docs/"}
                   FILEPATH=${FILEPATH%".md"}
                   FILEPATH=${FILEPATH/ /"%20"}
-                  TITLE_URL="nobrainergames.com/$FILEPATH/"
+                  TITLE_URL="https://nobrainergames.com/$FILEPATH/"
                 fi
               fi
               MODIFIED_COUNT=$((MODIFIED_COUNT+1))
@@ -62,10 +62,6 @@ jobs:
           done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
 
           echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
-
-          echo "DID_UPDATE=true" >> $GITHUB_ENV
-          echo "NOTE_DESC=\"\"" >> $GITHUB_ENV
-          echo "NOTE_URL=\"$TITLE_URL\"" >> $GITHUB_ENV
 
           curl -H "Content-Type: application/json" -d \
             "{\"username\": \"No Brainer Games\",\
