@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0
     - name: Post updates
       run: |
-        DAY_OFFSET=15
+        DAY_OFFSET=0
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
         DATE_YESTERDAY=$(date --date="$((-$DAY_OFFSET - 1)) day" +'%Y-%m-%d')
 
