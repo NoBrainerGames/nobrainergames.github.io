@@ -70,7 +70,7 @@ jobs:
     - name: Notify Discord
       if: env.DID_UPDATE == 'true'
       env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
+        DISCORD_WEBHOOK: "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}/github"
         DISCORD_USERNAME: "No Brainer Games"
         DISCORD_EMBEDS: |
           [
