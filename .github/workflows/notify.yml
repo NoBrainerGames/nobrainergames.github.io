@@ -61,7 +61,7 @@ jobs:
 
         echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
     - name: Notify Discord
-      ENV:
+      env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
         DISCORD_USERNAME: "No Brainer Games"
       uses: Ilshidur/action-discord@0.3.2
