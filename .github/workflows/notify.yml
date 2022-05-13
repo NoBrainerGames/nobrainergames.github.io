@@ -67,9 +67,11 @@ jobs:
           EMBEDS=$(printf ",%s", "${ALL_JSONS[@]}")
           EMBEDS=${EMBEDS:1}
 
-          curl -H "Content-Type: application/json" -d \
-            "{\"username\": \"No Brainer Games\",\
-              \"content\": \"Published ${#ADDED_JSONS[@]} new pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
-              \"embeds\": $EMBEDS}" \
-            "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
+          BODY="{\"username\": \"No Brainer Games\",\
+            \"content\": \"Published ${#ADDED_JSONS[@]} new pages and changed ${#MODIFIED_JSONS[@]} pages.\",\
+            \"embeds\": $EMBEDS}"
+
+          echo "Sending payload '$BODY' to Discord server..."
+
+          curl -H "Content-Type: application/json" -d "$BODY" "${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}"
         fi
