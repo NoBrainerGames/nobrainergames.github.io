@@ -76,11 +76,11 @@ jobs:
           {
             "embeds": [
               {
-                "description": \\"${{ env.NOTE_DESC }}\\"
+                "description": "${{ env.NOTE_DESC }}"
               },
               {
-                "title": \"New update\",
-                "url": \"${{ env.NOTE_URL }}\"
+                "title": "New update",
+                "url": "${{ env.NOTE_URL }}"
               }
             ]
           }
