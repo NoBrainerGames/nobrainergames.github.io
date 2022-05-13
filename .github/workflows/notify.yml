@@ -64,17 +64,13 @@ jobs:
           echo "Found $ADDED_COUNT added files and $MODIFIED_COUNT modified files."
 
           echo "DID_UPDATE=true" >> $GITHUB_ENV
-
-          DISCORD_EMBEDS=$(jq -n \
-            --arg desc "Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages." \
-            --arg url "$TITLE_URL" \
-            '{embeds:[{description: $desc}, {title: "New update", url: $url}]}')
-
-          echo "DISCORD_EMBEDS='$DISCORD_EMBEDS'" >> $GITHUB_ENV
+          echo 'NOTE_DESC="Published $ADDED_COUNT new pages and changed $MODIFIED_COUNT pages."' >> $GITHUB_ENV
+          echo "NOTE_URL=\"$TITLE_URL\"" >> $GITHUB_ENV
         fi
     - name: Notify Discord
       if: env.DID_UPDATE == 'true'
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_SITE_UPDATES_WEBHOOK }}
         DISCORD_USERNAME: "No Brainer Games"
+        DISCORD_EMBEDS: "{\"embeds\":[{\"description\":\"${{ env.NOTE_DESC }}\"},{\"title\":\"New update\",\"url\":\"${{ env.NOTE_URL }}\"}]}"
       uses: Ilshidur/action-discord@0.3.2
