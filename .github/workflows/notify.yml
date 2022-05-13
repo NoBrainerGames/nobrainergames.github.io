@@ -41,7 +41,7 @@ jobs:
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
               TITLE="$FILEPATH"
-              FILEPATH=${FILEPATH/ /"%20"}
+              FILEPATH=${FILEPATH// /"%20"}
               URL="https://nobrainergames.com/$FILEPATH/"
               ADDED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
               ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
@@ -53,7 +53,7 @@ jobs:
               FILEPATH=${filename#"docs/"}
               FILEPATH=${FILEPATH%".md"}
               TITLE="$FILEPATH"
-              FILEPATH=${FILEPATH/ /"%20"}
+              FILEPATH=${FILEPATH// /"%20"}
               URL="https://nobrainergames.com/$FILEPATH/"
               MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
               ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
