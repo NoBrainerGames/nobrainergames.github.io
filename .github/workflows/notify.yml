@@ -44,9 +44,11 @@ jobs:
               FILEPATH=${FILEPATH// /"%20"}
               URL="https://nobrainergames.com/$FILEPATH/"
               ADDED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
-              ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"65280\"}")
+              ALL_JSONS+=(${ADDED_JSONS[-1]})
             fi
           done < <(printf "%s\0" "$ADDED_FILES" | tr "\n" "\0")
+
+          echo "Found ${#ADDED_JSONS[@]} added files."
 
           while IFS='' read -r -d '' filename; do
             if [ -f "$filename" ]; then
@@ -56,11 +58,11 @@ jobs:
               FILEPATH=${FILEPATH// /"%20"}
               URL="https://nobrainergames.com/$FILEPATH/"
               MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
-              ALL_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
+              ALL_JSONS+=(${MODIFIED_JSONS[-1]})
             fi
           done < <(printf "%s\0" "$MODIFIED_FILES" | tr "\n" "\0")
 
-          MODIFIED_JSONS+=("{\"title\":\"$TITLE\",\"url\":\"$URL\",\"color\":\"16776960\"}")
+          echo "Found ${#MODIFIED_JSONS[@]} modified files."
 
           if [ ${#ALL_JSONS[@]} -ne 0 ]; then
             EMBEDS=$(IFS=, ; echo "${ALL_JSONS[*]}")
