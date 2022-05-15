@@ -19,9 +19,13 @@ jobs:
         fetch-depth: 0
     - name: Post updates
       run: |
+        echo "It is now $(date + '%Y-%m-%d %H:%M:%S')."
+
         DAY_OFFSET=0
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
         DATE_YESTERDAY=$(date --date="$((-$DAY_OFFSET - 1)) day" +'%Y-%m-%d')
+
+        echo "Looking for commits between $DATE_TODAY and $DATE_YESTERDAY..."
 
         TODAY_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_TODAY 00:00:00" staging)
         PREVIOUS_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_YESTERDAY 00:00:00" staging)
