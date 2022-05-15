@@ -19,7 +19,7 @@ jobs:
         fetch-depth: 0
     - name: Post updates
       run: |
-        echo "It is now $(date + '%Y-%m-%d %H:%M:%S')."
+        echo "It is now $(date +'%Y-%m-%d %H:%M:%S')."
 
         DAY_OFFSET=0
         DATE_TODAY=$(date --date="$((-$DAY_OFFSET)) day" +'%Y-%m-%d')
