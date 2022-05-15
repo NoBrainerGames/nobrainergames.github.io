@@ -27,10 +27,10 @@ jobs:
         PREVIOUS_COMMIT=$(git rev-list -n 1 --first-parent --before="$DATE_YESTERDAY 00:00:00" staging)
 
         if [ ! -z "$TODAY_COMMIT" ]; then
-          echo "Checking files changed between $PREVIOUS_COMMIT and $TODAY_COMMIT..."
-
           ADDED_FILES=$(git diff --name-only --diff-filter=A $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
           MODIFIED_FILES=$(git diff --name-only --diff-filter=M $PREVIOUS_COMMIT $TODAY_COMMIT | grep \.md$)
+
+          echo "Checking files changed between $PREVIOUS_COMMIT and $TODAY_COMMIT..."
 
           ADDED_JSONS=()
           MODIFIED_JSONS=()
