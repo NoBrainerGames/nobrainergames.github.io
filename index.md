@@ -1,1 +1,3 @@
-# Welcome to No Brainer Games!
+---
+layout: home
+---
