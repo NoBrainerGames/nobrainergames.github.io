@@ -13,7 +13,7 @@ permalink: /about/
   }
 </style>
 
-![Avatar](https://picsum.photos/id/219/300/300#avatar)
+![Avatar](assets/avatar.jpeg#avatar)
 
 I am an experienced Software Engineer with a demonstrated history of working in the computer software industry. I have experience in virtual reality and game development with Unreal Engine and Unity3D, iOS development with Objective-C and Swift, the Flutter framework for mobile, and web backend development with TypeScript, AWS, GCP, and Firebase.
 
