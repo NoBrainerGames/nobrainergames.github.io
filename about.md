@@ -15,10 +15,10 @@ permalink: /about/
 
 ![Avatar](assets/avatar.jpeg#avatar)
 
-I am an experienced Software Engineer with a demonstrated history of working in the computer software industry. I have experience in virtual reality and game development with Unreal Engine and Unity3D, iOS development with Objective-C and Swift, the Flutter framework for mobile, and web backend development with TypeScript, AWS, GCP, and Firebase.
+## Hi, I'm Ryan!
 
-In my spare time I work on a custom 3D game engine written in the Nim programming language, while integrating and working with tools and frameworks written in C++ and the Vulkan API. I also enjoy contributing to various open source projects, and dabbling in creative writing.
+By day I am a software engineer with 10+ years professional experience in areas including games, virtual reality, native mobile, Flutter, and web backend.
 
-My current favourite tools are Flutter for mobile apps, TypeScript and AWS for backend, and Nim for rapid prototyping and custom solutions.
+By night I work on my life-long passion project dubbed No Brainer Games, where I constantly challenge my technical skills and creativity.
 
-In the future I would like to learn the Rust programming language to dive into its community and growing ecosystem.
+If you're interested in collaborating or discussing your own projects, please get in touch!
