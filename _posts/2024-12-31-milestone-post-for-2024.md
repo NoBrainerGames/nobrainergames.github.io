@@ -8,9 +8,9 @@ The year 2020 put a nagging question in my head: *what is a difficult problem th
 
 I had some experience creating VR games using Unity3D and Unreal Engine 4 in past jobs, and really enjoyed the creative, technical, and grant writing (🙃) aspects of it, but I was never exposed to the lower level systems running behind the scenes.
 
-So I embarked on a journey of coffee-fuelled nights and socially-deprived weekends towards what seemed like an impossible goal at the time. 4 years and 3 rewrites later, I am proud to announce the first demo of my 3D game engine!
+So I embarked on a journey of coffee-fuelled nights and socially-deprived weekends towards what seemed like an impossible goal at the time. 4 years and 3 rewrites later, I am proud to announce the demo of my upcoming indie game made with my own game engine!
 
-I laid out the following requirements for the MVP:
+I laid out the following requirements for the engine MVP:
 1. Must be written in a small programming language that I can contribute to.
 2. Said programming language must be able to interface with both C and C++.
 3. 3D rendering system must be portable to all major desktop and mobile platforms without too much extra work.
@@ -25,9 +25,11 @@ I'm happy to say that the MVP has (mostly) hit these requirements, having the fo
 5. Custom ECS that supports usage across DLL boundaries, used for hot code reloading and plug-in functionality.
 6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU.
 
- There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner @anna who is a talented music producer decided to have some fun with it and added sound post-recording. Lighting/shadows are currently in development, and I am experimenting with constraint-based physics for more stable simulations.
+ There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner @anna who is a talented music producer decided to have some fun with it and added sound post-recording. Another obvious missing piece is lighting/shadows which is currently in development.
 
 While there is still a metric ton of research, development and QA to be done, I would love to get in touch with Nim/XR/graphics/game devs out there to learn and share ideas. Check out my [blog](https://nobrainergames.com/) for more details on the project. I am in the process of opensourcing parts of the code in my [github account](https://github.com/n0bra1n3r) and will be looking forward to feedback on it, so feel free to follow/watch!
+
+By the way, I used [meshy.ai](https://www.meshy.ai/) to generate the placeholder demo assets which saved me an unimaginable amount time and cognitive bandwidth.
 
 <iframe
     width="641"
