@@ -148,29 +148,29 @@ proc renderPicker(self: Game) =
 #### Rendering and animation shaders
 These form a graphics pipeline that renders static and animated skeletal meshes. Ideas on animated crowd rendering were taken from [GPU Gems 3 ch. 2](https://developer.nvidia.com/gpugems/gpugems3/part-i-geometry/chapter-2-animated-crowd-rendering).
 
-Per-instance mesh transforms and textures are passed to the shaders via an SSBO and rendered using instanced rendering.
+Per-instance vertex transforms and textures are passed to the shaders via an SSBO and rendered using instanced rendering.
 
 Skeletal animation is done by indexing into another SSBO containing pre-calculated transform matrices of all bones in all frames of all animations. This index is computed from a combination of the current game time, the instance ID, and the animation index. The calculation of the transform matrices is done CPU-side by the [scene builder](#scene-builder).
 
 This pipeline is dispatched in 1 `vkCmdDrawIndexIndirect` call per frame.
 
 #### Physics shaders
-This is a set of graphics and compute pipelines implementing [GPU Gems 3 ch. 29](https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-29-real-time-rigid-body-simulation-gpus). This chapter of the book describes a method to efficiently simulate many rigid bodies by performing calculations on their particle representations. After many weeks of trying out different implementations I ended up with a very fast physics simulator, but there are still many problems to solve around determinism and tunneling.
+This is a set of graphics and compute pipelines implementing [GPU Gems 3 ch. 29](https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-29-real-time-rigid-body-simulation-gpus). This chapter of the book describes a method to efficiently simulate many rigid bodies by performing calculations on their particle representations. After many weeks of trying out different implementations I ended up with a very fast physics solver, but there are still many problems to solve around determinism and tunneling.
 
 The particle representations are generated once per object prior to simulation with the following steps:
 1. Render the front, back, right, left, bottom and top of the object onto a render target.
 2. Group all filled pixels into cells of a 3D grid with positions relative to the center of mass and store these positions in an SSBO. These positions represent the particles that are used in collision detection and force calculations.
 3. Store the information required to fetch the particle data computed in the current pipeline dispatch set in another SSBO. This represents the rigid body that is used in the linear and angular momentum calculations.
 
-I used instancing and the `VkPhysicalDeviceFeatures::fragmentStoresAndAtomics` feature to perform this voxelization pass in 1 draw call and 1 compute shader dispatch.
+I used instancing and the `VkPhysicalDeviceFeatures::fragmentStoresAndAtomics` feature to perform this voxelization pass in 1 draw call and 2 compute shader dispatches.
 
-Per-frame physics simulation is done in the following steps:
+Physics simulation is done in the following steps:
 1. Perform collision detection using spatial hashing on each particle.
 2. Compute gravitational and collision forces on each particle.
 3. Transform the objects using the calculated linear and angular momentums.
 4. Re-run the simulation a few more times to stabilize floating point values.
 
-Physics simulations average 27 compute shader dispatches per frame and can handle 98k+ simultaneous collisions while maintaining 120 FPS on an Apple M2 Pro machine.
+This averages 27 compute shader dispatches per frame and can handle 98k+ simultaneous collisions while maintaining 120 FPS on an Apple M2 Pro machine.
 
 #### Picker shaders
 These form a graphics pipeline used to detect objects under the mouse cursor for object picking.
