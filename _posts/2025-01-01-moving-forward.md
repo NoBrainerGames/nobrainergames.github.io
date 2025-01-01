@@ -42,7 +42,7 @@ It turned out that in the first phase of the algorithm, models are rendered rela
 
 My first thought was to simply apply the difference between the origin and the CoM to particle positions in the physics solvers. Easy right? Well, the next link in this chain of problems was how to get the CoM in the first place.
 
-The obvious way to get the CoM is to (1) accumulate the sum of all particle grid coordinates and (2) divide the sum by the number of particles. Since the grid coordinates are computed on GPU, this means that the CoM calculation should also be done there:
+The obvious way is to (1) accumulate the sum of all particle grid coordinates and (2) divide the sum by the number of particles. Since the grid coordinates are computed on GPU, this means that the CoM calculation should also be done there:
 
 ```nim
 # Nim shader module
@@ -67,7 +67,7 @@ proc divideByParticleCount(cIn: CIn) {.computeShader.} = # (2)
   centerOfMass.store(centerOfMass.load() / Float(particleCount))
 ```
 
-But the main issue here is that the accumulation operation in `accumulatePositionSum` must be done atomically as opposed to separate `load`, `increment`, and `store` operations. This is because the shader is executed in parallel threads, which means that the order of operations on `centerOfMass` is indeterminate. Fortunately the [`interlockedAdd`](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/interlockedadd) intrinsic can be used for this purpose, so the implementation would be:
+But the issue here is that the accumulation operation in `accumulatePositionSum` must be done atomically as opposed to separate `load`, `increment`, and `store` operations. This is because the shader is executed in parallel threads, which means that the order of operations on `centerOfMass` is indeterminate. Fortunately the [`interlockedAdd`](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/interlockedadd) intrinsic can be used for this purpose, so the implementation would be:
 
 ```nim
 # ...
