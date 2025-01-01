@@ -25,7 +25,7 @@ I'm happy to say that the MVP has (mostly) hit these requirements, having the fo
 5. Custom ECS that supports usage across DLL boundaries, used for hot code reloading and plug-in functionality.
 6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU.
 
- There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner @anna who is a talented music producer decided to have some fun with it and added sound post-recording. Another obvious missing piece is lighting/shadows which is currently in development.
+ There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another obvious missing piece is lighting/shadows which is currently in development.
 
 While there is still a metric ton of research, development and QA to be done, I would love to get in touch with Nim/XR/graphics/game devs out there to learn and share ideas. Check out my [blog](https://nobrainergames.com/) for more details on the project. I am in the process of opensourcing parts of the code in my [github account](https://github.com/n0bra1n3r) and will be looking forward to feedback on it, so feel free to follow/watch!
 

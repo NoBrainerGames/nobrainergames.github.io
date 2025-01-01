@@ -11,7 +11,7 @@ I mentioned that the physics solver still has issues around stability and tunnel
 
 This is very bad news for a VR-focused engine.
 
-The voxelization shader is responsible for generating the particles that make up a rigid body, and is invoked once for every object that is instantiated. Conceptually, it works in two phases by (1) projecting the surface of the object onto the surface of the smallest cube that encloses the object, and then (2) taking the cells of that cube that intersect with the surface of the object as the particles. Pseudocode for a non-parallelized version of this could be something like:
+The voxelization shader is responsible for generating the particles that make up a rigid body, and is invoked once for every object that is instantiated. Conceptually, it works in two phases by (1) projecting the surface of the object onto the smallest cube that encloses the object, and then (2) taking the cells of that cube that intersect with the surface of the object as the particles. Pseudocode for a non-parallelized version of this could be something like:
 
 ```
 given instance I with origin at <X, Y, Z>
