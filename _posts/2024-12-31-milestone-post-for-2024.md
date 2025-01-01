@@ -18,18 +18,18 @@ I laid out the following requirements for the engine MVP:
 5. Architecture must be modular and components easily testable.
 
 I'm happy to say that the MVP has (mostly) hit these requirements, having the following notable features:
-1. Written almost entirely in the [Nim](https://nim-lang.org/) programming language -- including the shaders -- with some C/C++ to interface with third party libraries.
+1. Written almost entirely in the [Nim](https://nim-lang.org/) programming language -- including the shaders -- with some C and C++ for glue code for third party libraries.
 2. Uses [Diligent](https://diligentgraphics.github.io/) with the Vulkan API, taking advantage of bindless resources, indirect rendering, and instancing to render arbitrary scenes in 1 draw call.
-3. GPU-driven animation of skeletal meshes loaded from gltf2 asset files, allowing for efficient animation of large crowds.
+3. GPU-driven animation of skeletal meshes loaded from gltf2 asset files for efficient crowd animation.
 4. Force-based rigid body physics based on particles implemented with compute shaders, supporting >98k simultaneous collisions at 120+ FPS on an Apple M2 Pro machine.
 5. Custom ECS that supports usage across DLL boundaries, used for hot code reloading and plug-in functionality.
 6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU.
 
- There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another obvious missing piece is lighting/shadows which is currently in development.
+ There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another obvious missing piece is lighting which is currently in development.
 
 While there is still a metric ton of research, development and QA to be done, I would love to get in touch with Nim/XR/graphics/game devs out there to learn and share ideas. Check out my [blog](https://nobrainergames.com/) for more details on the project. I am in the process of opensourcing parts of the code in my [github account](https://github.com/n0bra1n3r) and will be looking forward to feedback on it, so feel free to follow/watch!
 
-By the way, I used [meshy.ai](https://www.meshy.ai/) to generate the placeholder demo assets which saved me an unimaginable amount time and cognitive bandwidth.
+By the way, I used [meshy.ai](https://www.meshy.ai/) to create the demo assets which saved me an unimaginable amount time and cognitive bandwidth.
 
 <iframe
     width="641"
