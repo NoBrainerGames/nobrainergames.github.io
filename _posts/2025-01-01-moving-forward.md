@@ -78,4 +78,10 @@ But the issue here is that the accumulation operation in `accumulatePositionSum`
     centerOfMass[2].interlockedAdd(particleGridCoord.z)
 ```
 
+Take note though that `interlockedAdd` treats the underlying bytes in the buffer as integers and not floating point values. This should be taken into account in the division operation in `divideByParticleCount`:
+
+```nim
+  centerOfMass.store(float3(asUInt(centerOfMass.load())) / Float(particleCount))
+```
+
 And then offset particle locations in the physics solvers by `conterOfMass`. Problem solved! Stay tuned for my solution to the original performance problem... 😅
