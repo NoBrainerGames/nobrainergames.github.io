@@ -1,7 +1,28 @@
-.site-title::before {
-  content: url("/assets/logo.png");
-  display: inline-block;
-  position: relative;
-  width: 37px;
-  top: 5px;
+@font-face {
+  font-family: 'Designer';
+  src: url('/assets/fonts/Designer.woff2') format('woff2'),
+       url('/assets/fonts/Designer.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.site-title {
+  font-family: 'Designer', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  color: #FFAA40;
+  
+  &::before {
+    content: url("/assets/logo.png");
+    display: inline-block;
+    position: relative;
+    width: 37px;
+    top: 5px;
+  }
+}
+
+.site-nav .page-link {
+  color: #2F54DE;
+  font-weight: bold;
 }
