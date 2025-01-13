@@ -23,7 +23,7 @@ I'm happy to say that the MVP has (mostly) hit these requirements, having the fo
 3. GPU-driven animation of skeletal meshes loaded from gltf2 asset files for efficient crowd animation.
 4. Force-based rigid body physics based on particles implemented with compute shaders, supporting >98k simultaneous collisions at 120+ FPS on an Apple M2 Pro machine.
 5. Custom ECS that supports usage across DLL boundaries, used for hot code reloading and plug-in functionality.
-6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU.
+6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU. Try out the WIP [playground](https://nobrainergames.com/playground.html) to see the transpiler working.
 
  There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another obvious missing piece is lighting which is currently in development.
 
