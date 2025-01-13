@@ -7,6 +7,15 @@
   font-display: swap;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: #181818;
+  z-index: 1000;
+  border-top: 5px solid #424242;
+  border-bottom: 1px solid #e8e8e8;
+}
+
 .site-title {
   font-family: 'Designer', sans-serif;
   font-size: 1.25rem;
