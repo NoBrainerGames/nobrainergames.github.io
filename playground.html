@@ -145,7 +145,7 @@
 </head>
 
 <body>
-  <h1>Nim Code Executor</h1>
+  <h1>Nim shader playground</h1>
   <div class="ko-fi-container">
     <a href="https://ko-fi.com/nobrainergames" target="_blank" class="ko-fi-button">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,7 +277,12 @@
 
     // Initialize CodeMirror
     const editor = CodeMirror(document.getElementById('editor'), {
-      value: `import ./src/shader
+      value: `# This is a Nim shader module. This gets converted into HLSL and sent to the GPU.
+# Most HLSL primitive types and buffers are supported. See:
+#  https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-data-types
+# This playground uses BabylonJS to render the scene.
+
+import ./src/shader
 
 type
   VSIn = object
@@ -308,6 +313,7 @@ let cubeVertices: array[8'cu, Float3] = [
   float3( 1,  1, -1),  # back top right
 ]
 
+# TODO: Fix these up so the texture cube is properly rendered.
 let cubeIndices*: array[36'cu, UInt] = [
   # front
   0'cu, 2, 1,  2, 3, 1,
@@ -320,7 +326,7 @@ let cubeIndices*: array[36'cu, UInt] = [
   # top
   2, 6, 3,  6, 7, 3,
   # bottom
-  5, 1, 4,  4, 1, 0  # fixed bottom face
+  5, 1, 4,  4, 1, 0
 ]
 
 proc vtx*(vsIn: VSIn, vsOut: out VSOut) {.vertexShader, shaderDebug.} =
