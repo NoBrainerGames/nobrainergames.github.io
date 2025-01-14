@@ -34,4 +34,13 @@
 .site-nav .page-link {
   color: #2F54DE;
   font-weight: bold;
+  font-family: monospace;
+  
+  &::before {
+    content: '[';
+  }
+  
+  &::after {
+    content: ']';
+  }
 }
