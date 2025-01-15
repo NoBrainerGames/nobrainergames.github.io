@@ -23,13 +23,15 @@ I'm happy to say that the MVP has (mostly) hit these requirements, having the fo
 3. GPU-driven animation of skeletal meshes loaded from gltf2 asset files for efficient crowd animation.
 4. Force-based rigid body physics based on particles implemented with compute shaders, supporting >98k simultaneous collisions at 120+ FPS on an Apple M2 Pro machine.
 5. Custom ECS that supports usage across DLL boundaries, used for hot code reloading and plug-in functionality.
-6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU. Try out the WIP [playground](https://nobrainergames.com/playground.html) to see the transpiler working.
+6. Nim to HLSL transpiler with shader reflection, enabling rapid prototyping and unit tests that are run on CPU. Try out the (very) WIP [playground](https://nobrainergames.com/playground.html) to see the transpiler working.
 
- There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound engine, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another obvious missing piece is lighting which is currently in development.
+ There are quite a few missing elements that need to be implemented to get the demo to a playable state. For instance there is still no sound subsystem, although my partner [Anna del Rosario](https://www.linkedin.com/in/annadelro) who is a talented music producer decided to have some fun with it by adding sound post-recording. Another missing piece is lighting which is currently in development.
 
-While there is still a metric ton of research, development and QA to be done, I would love to get in touch with Nim/XR/graphics/game devs out there to learn and share ideas. Check out my [blog](https://nobrainergames.com/) for more details on the project. I am in the process of opensourcing parts of the code in my [github account](https://github.com/n0bra1n3r) and will be looking forward to feedback on it, so feel free to follow/watch!
+While there is still a metric ton of research, development and QA to be done, I would love to get in touch with Nim/XR/graphics/game devs and founders out there to learn and share ideas. Check out my [blog](https://nobrainergames.com/) for more details on the project and contact information. I am in the process of opensourcing parts of the code in my [github account](https://github.com/n0bra1n3r) and will be looking forward to feedback on it, so feel free to follow/watch!
 
 By the way, I used [meshy.ai](https://www.meshy.ai/) to create the demo assets which saved me an unimaginable amount time and cognitive bandwidth.
+
+#vr #game #graphics #shaders #engine #ai #nim #cpp #diligentgraphics #meshyai
 
 <iframe
     width="641"
