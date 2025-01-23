@@ -553,6 +553,27 @@
       }
     }
 
+    function saveChatToLocalStorage() {
+      localStorage.setItem('chatMessages', JSON.stringify(messages));
+    }
+
+    function loadChatFromLocalStorage() {
+      const savedMessages = localStorage.getItem('chatMessages');
+      if (savedMessages) {
+        messages.length = 0; // Clear current messages
+        messages.push(...JSON.parse(savedMessages));
+
+        // Display all saved messages
+        const messagesContainer = document.querySelector(".messages-container");
+        messagesContainer.innerHTML = ''; // Clear current display
+        messages.forEach(message => {
+          if (message.role !== 'system') { // Don't display system messages
+            appendMessage(message);
+          }
+        });
+      }
+    }
+
     async function onMessageSend() {
       if (!isModelDownloaded || !isModelInitialized) {
         document.getElementById("user-input").disabled = true;
@@ -568,7 +589,6 @@
         return;
       }
 
-      // Clear input immediately
       document.getElementById("user-input").value = "";
 
       const message = {
@@ -581,6 +601,7 @@
       document.getElementById("user-input").setAttribute("placeholder", "Generating...");
       messages.push(message);
       appendMessage(message);
+      saveChatToLocalStorage(); // Save after adding user message
 
       const aiMessage = {
         content: "typing...",
@@ -590,6 +611,8 @@
 
       const onFinishGenerating = (finalMessage) => {
         updateLastMessage(finalMessage);
+        messages.push({content: finalMessage, role: "assistant"}); // Add assistant message to messages array
+        saveChatToLocalStorage(); // Save after adding assistant message
         document.getElementById("send").disabled = false;
         document.getElementById("user-input").disabled = false;
         document.getElementById("user-input").setAttribute("placeholder", "Type your message here...");
@@ -636,6 +659,8 @@
     window.addEventListener('resize', updateMessagesPadding);
 
     document.addEventListener('DOMContentLoaded', function () {
+      loadChatFromLocalStorage();
+
       const userInput = document.getElementById("user-input");
       const sendButton = document.getElementById("send");
 
