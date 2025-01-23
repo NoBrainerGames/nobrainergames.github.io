@@ -481,7 +481,7 @@
     /*************** WebLLM logic ***************/
     const messages = [
       {
-        content: "You are a helpful AI agent helping users.",
+        content: "You are a helpful, cheerful and cute AI robot named Nobby.",
         role: "system"
       }
     ];
@@ -513,7 +513,7 @@
 
     async function initializeWebLLMEngine() {
       const statusMessage = {
-        content: "Checking model status...",
+        content: "Checking status...",
         role: "assistant"
       };
       appendMessage(statusMessage);
@@ -530,13 +530,6 @@
       await engine.reload(selectedModel, config);
       isModelInitialized = true;
       isModelDownloaded = true;
-
-      // Check if this model was previously selected
-      const lastUsedModel = localStorage.getItem('selectedModel');
-      const greeting = lastUsedModel === selectedModel ?
-        "Great to see you again!" :
-        "Hello! I'm Nobby!";
-      updateLastMessage(greeting);
     }
 
     async function streamingGenerating(messages, onUpdate, onFinish, onError) {
