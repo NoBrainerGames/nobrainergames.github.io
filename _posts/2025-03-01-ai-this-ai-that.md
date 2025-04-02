@@ -5,7 +5,7 @@ categories: engine
 comments: true
 ---
 
-I realized that noboby ever stops talking about AI. I heard about it so much on the various channels I lurk in that it became a problem.
+I realized that nobody ever stops talking about AI. I heard about it so much on the various channels I lurk in that it became a problem.
 
 So I decided to do something about it.
 
