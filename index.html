@@ -1,0 +1,114 @@
+---
+layout: page
+---
+
+<style>
+  /* Only target the coming soon content, keep header intact */
+  .page-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .page-content .wrapper {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Fix the spacing issue between header and content */
+  .site-header {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  .page-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Hide the footer */
+  .site-footer {
+    display: none !important;
+  }
+
+  .coming-soon-container {
+    height: calc(100vh - 122px); /* Keep some subtraction for header */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('https://via.placeholder.com/1920x1080');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: 0;
+  }
+
+  .content {
+    padding: 2rem;
+    z-index: 2;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content items horizontally */
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .email-form {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto; /* Center the form */
+  }
+
+  .email-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+  }
+
+  .submit-button {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<div class="coming-soon-container">
+  <div class="content">
+    <h1>Coming Soon</h1>
+    <p>We're working hard to bring you something amazing. Stay tuned for updates!</p>
+
+    <form class="email-form" action="#" method="POST">
+      <input type="email" class="email-input" placeholder="Enter your email address" required>
+      <button type="submit" class="submit-button">Notify Me</button>
+    </form>
+  </div>
+</div>
