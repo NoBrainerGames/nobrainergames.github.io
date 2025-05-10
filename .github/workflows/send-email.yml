@@ -1,0 +1,36 @@
+name: Send Email
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        type: string
+        description: email address to send
+        required: true
+
+env:
+  GMAIL_APP_USER: ${{ secrets.GMAIL_APP_USER }}
+  GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Send Email
+        env: 
+          CONTACT_EMAIL: ${{ github.event.inputs.email }}
+        run: |
+          node .github/scripts/send-email.mjs

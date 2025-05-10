@@ -106,8 +106,10 @@ layout: page
     <h1>Project Nobby</h1>
     <p>We're a designer, a programmer, and a researcher working on your trust-worthy sidekick in work and play.<br><br>Stay tuned for updates!</p>
 
-    <form class="email-form" action="#" method="POST">
-      <input type="email" class="email-input" placeholder="Enter your email address" required>
+    <form class="email-form" action="https://formspree.io/f/mnndzlbr" method="POST">
+      <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="hidden" name="_subject" value="New Nobby subscriber">
       <button type="submit" class="submit-button">Update Me</button>
     </form>
   </div>
