@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Designer';
   src: url('/assets/fonts/Designer.woff2') format('woff2'),
-       url('/assets/fonts/Designer.woff') format('woff');
+    url('/assets/fonts/Designer.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -20,8 +20,12 @@
   font-family: 'Designer', sans-serif;
   font-size: 1.25rem;
   letter-spacing: 1px;
-  color: #FFAA40;
-  
+
+  &:hover {
+    color: #FFAA40;
+    text-decoration: none;
+  }
+
   &::before {
     content: url("/assets/logo.png");
     display: inline-block;
@@ -34,11 +38,16 @@
 .site-nav .page-link {
   font-weight: bold;
   font-family: monospace;
-  
+
+  &:hover {
+    color: #FFAA40;
+    text-decoration: none;
+  }
+
   &::before {
     content: '[';
   }
-  
+
   &::after {
     content: ']';
   }
