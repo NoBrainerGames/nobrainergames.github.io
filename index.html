@@ -3,7 +3,6 @@ layout: page
 ---
 
 <style>
-  /* Only target the coming soon content, keep header intact */
   .page-content {
     padding: 0 !important;
     margin: 0 !important;
@@ -15,7 +14,6 @@ layout: page
     margin: 0 !important;
   }
 
-  /* Fix the spacing issue between header and content */
   .site-header {
     border-bottom: none !important;
     margin-bottom: 0 !important;
@@ -26,13 +24,33 @@ layout: page
     padding-top: 0 !important;
   }
 
-  /* Hide the footer */
   .site-footer {
     display: none !important;
   }
 
+  .close-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+    transition: background-color 0.3s;
+  }
+
+  .close-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   .coming-soon-container {
-    height: calc(100vh - 122px); /* Keep some subtraction for header */
+    height: calc(100vh - 122px);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,6 +65,12 @@ layout: page
     margin: 0;
     padding: 0;
     top: 0;
+    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+  }
+
+  .slide-out {
+    transform: translate(-100%, -100%);
+    opacity: 0;
   }
 
   .content {
@@ -55,7 +79,7 @@ layout: page
     max-width: 600px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center all content items horizontally */
+    align-items: center;
   }
 
   h1 {
@@ -74,7 +98,7 @@ layout: page
     width: 100%;
     max-width: 500px;
     margin-left: auto;
-    margin-right: auto; /* Center the form */
+    margin-right: auto;
   }
 
   .email-input {
@@ -104,25 +128,45 @@ layout: page
     position: absolute;
     bottom: 24px;
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    transform: translateX(-50%);
   }
 
   .logo {
     max-width: 200px;
     height: auto;
   }
+
+  canvas.emscripten {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    outline: none;
+  }
+
+  #canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    border: 0 none;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <div class="coming-soon-container">
   <div class="content">
-    <h1>Project Nobby</h1>
-    <p>We're a designer, a programmer, and a researcher working on your trust-worthy sidekick in work and play.<br><br>Stay tuned for updates!</p>
+    <h1>Nobby on the way</h1>
+    <p>We're a designer, a programmer, and a researcher working on your trust-worthy sidekick in work and play.</p>
 
     <form class="email-form" action="https://formspree.io/f/mnndzlbr" method="POST">
       <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
       <input type="text" name="_gotcha" style="display:none">
       <input type="hidden" name="_subject" value="New Nobby subscriber">
-      <button type="submit" class="submit-button">Update Me</button>
+      <button type="submit" class="submit-button">Stay tuned!</button>
     </form>
   </div>
 
@@ -130,3 +174,144 @@ layout: page
     <img src="/assets/launchpad.png" alt="Logo" class="logo">
   </div>
 </div>
+
+<div id="canvas-container">
+  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+</div>
+
+<button id="closeButton" class="close-button" aria-label="Close">×</button>
+
+<script src="coi-serviceworker.js"></script>
+
+<script type='text/javascript'>
+  const canvas = document.getElementById('canvas');
+
+  var Module = {
+    preRun: function() {
+      const container = document.querySelector('.coming-soon-container');
+
+      Module['nobbyZoom'] = function() {
+        container.classList.add('slide-out');
+      }
+    },
+    postRun: function() {
+      if (canvas) canvas.focus();
+    },
+    print: (function() {
+      return function(text) {
+        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+        console.log(text);
+      };
+    })(),
+    printErr: function(text) {
+      if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+      console.error(text);
+    },
+    canvas: canvas,
+    setStatus: function(text) {
+      if (!Module.setStatus.last) Module.setStatus.last = {time: Date.now(), text: ''};
+      if (text === Module.setStatus.last.text) return;
+      const msg = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+      const now = Date.now();
+      if (msg && now - Module.setStatus.last.time < 30) return;
+      Module.setStatus.last.time = now;
+      Module.setStatus.last.text = text;
+      if (msg) text = msg[1];
+      if (text.length > 0) {
+        console.log(`emscripten: ${text}`);
+      }
+    },
+    totalDependencies: 0,
+    monitorRunDependencies: function(left) {
+      this.totalDependencies = Math.max(this.totalDependencies, left);
+      Module.setStatus(left ? 'preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'all downloads complete.');
+    },
+    onRuntimeInitialized: function() {
+      Module.setStatus('module loaded');
+
+      requestAnimationFrame(function() {
+        try {
+          if (Module.setCanvasSize) {
+            Module.setCanvasSize(window.innerWidth, window.innerHeight);
+          }
+        } catch (e) {
+          console.error("Error setting canvas size:", e);
+        }
+      });
+    },
+  };
+
+  async function initWebGPU() {
+    try {
+      if (!navigator.gpu) {
+        throw new Error("WebGPU not supported");
+      }
+
+      const requiredFeatures = [
+        "depth-clip-control",
+        "depth32float-stencil8",
+        "texture-compression-bc",
+        "indirect-first-instance",
+        "shader-f16",
+        "rg11b10ufloat-renderable",
+        "bgra8unorm-storage",
+        "float32-filterable",
+        "unorm16-texture-formats",
+        "snorm16-texture-formats",
+      ];
+
+      const adapter = await navigator.gpu.requestAdapter({powerPreference: "high-performance"});
+      if (!adapter) {
+        throw new Error("WebGPU adapter not available");
+      }
+
+      const supportedFeatures = requiredFeatures.filter(feature => adapter.features.has(feature));
+
+      const device = await adapter.requestDevice({
+        requiredFeatures: supportedFeatures,
+        requiredLimits: {
+          maxColorAttachmentBytesPerSample: adapter.limits.maxColorAttachmentBytesPerSample,
+          maxDynamicStorageBuffersPerPipelineLayout: adapter.limits.maxDynamicStorageBuffersPerPipelineLayout,
+          maxStorageBufferBindingSize: adapter.limits.maxStorageBufferBindingSize || adapter.limits.maxDynamicStorageBuffersPerPipelineLayout
+        }
+      });
+      console.log("Supported WebGPU features:", supportedFeatures);
+
+      Module.preinitializedWebGPUDevice = device;
+      return true;
+    } catch (error) {
+      console.error("WebGPU initialization failed:", error);
+      Module.setStatus('WebGPU error: ' + error.message);
+      return false;
+    }
+  }
+
+  Module.setStatus('initializing...');
+
+  initWebGPU().then(success => {
+    if (success) {
+      Module.setStatus('downloading...');
+      const script = document.createElement('script');
+      script.src = 'webnobby.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.coming-soon-container');
+    const closeButton = document.getElementById('closeButton');
+
+    container.addEventListener('transitionend', function() {
+      if (container.classList.contains('slide-out')) {
+        closeButton.style.display = 'block';
+      }
+    });
+
+    closeButton.addEventListener('click', function() {
+      container.classList.remove('slide-out');
+      closeButton.style.display = 'none';
+      _nobbyIdle();
+    });
+  });
+</script>
