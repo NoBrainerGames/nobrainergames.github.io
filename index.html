@@ -449,17 +449,30 @@ layout: page
     const header = document.querySelector('.site-header');
     const interactor = document.querySelector('.nobby-interactor');
 
-    const audioElement = new Audio('/assets/nobby-background.mp3');
-    audioElement.loop = true;
+    const nobbyBackgroundSound = new Audio('/assets/nobby-background.mp3');
+    nobbyBackgroundSound.loop = true;
+    nobbyBackgroundSound.volume = 0.4;
 
     function startBackgroundAudio() {
-      audioElement.currentTime = 0;
-      audioElement.play().catch(e => console.error("Audio play error:", e));
+      nobbyBackgroundSound.currentTime = 0;
+      nobbyBackgroundSound.play().catch(e => console.error("Background sound error:", e));
     }
 
     function stopBackgroundAudio() {
-      audioElement.pause();
+      nobbyBackgroundSound.pause();
     }
+
+    const buttonHoverSound = new Audio('/assets/button-hover.mp3');
+    buttonHoverSound.volume = 0.5;
+
+    function playButtonHoverSound() {
+      buttonHoverSound.currentTime = 0;
+      buttonHoverSound.play().catch(e => console.error("Button hover sound error:", e));
+    }
+
+    document.querySelectorAll('.radial-button').forEach(button => {
+      button.addEventListener('mouseenter', playButtonHoverSound);
+    });
 
     container.addEventListener('transitionend', function () {
       if (container.classList.contains('slide-out')) {
