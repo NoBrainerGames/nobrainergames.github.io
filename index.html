@@ -449,9 +449,22 @@ layout: page
     const header = document.querySelector('.site-header');
     const interactor = document.querySelector('.nobby-interactor');
 
+    const audioElement = new Audio('/assets/nobby-background.mp3');
+    audioElement.loop = true;
+
+    function startBackgroundAudio() {
+      audioElement.currentTime = 0;
+      audioElement.play().catch(e => console.error("Audio play error:", e));
+    }
+
+    function stopBackgroundAudio() {
+      audioElement.pause();
+    }
+
     container.addEventListener('transitionend', function () {
       if (container.classList.contains('slide-out')) {
         showRadialButtons();
+        startBackgroundAudio();
       } else {
         interactor.style.display = 'block';
       }
@@ -473,6 +486,7 @@ layout: page
     });
 
     closeButton.addEventListener('click', function () {
+      stopBackgroundAudio();
       _nobbyIdle();
       hideRadialButtons();
       container.classList.remove('slide-out');
