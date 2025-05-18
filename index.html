@@ -5,6 +5,11 @@ layout: page
 <style>
   body {
     background-color: #BBBBBB;
+    background-image: url('/assets/nobby-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
   }
@@ -41,7 +46,7 @@ layout: page
 
   .radial-buttons-container {
     position: fixed;
-    bottom: 0px;
+    bottom: 50%;
     left: 50%;
     width: 0;
     height: 0;
@@ -52,7 +57,7 @@ layout: page
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: rgba(0.09, 0.09, 0.09, 0.5);
+    background-color: #181818;
     color: white;
     border: none;
     border-radius: 20px;
@@ -88,7 +93,6 @@ layout: page
   .radial-button:hover {
     width: 250px;
     height: 250px;
-    background-color: #181818;
     border-radius: 20px;
   }
 
@@ -103,8 +107,7 @@ layout: page
   }
 
   #closeButton {
-    left: 180px;
-    top: -500px;
+    left: 300px;
   }
 
   #closeButton .radial-button-text {
@@ -124,27 +127,19 @@ layout: page
   }
 
   #toolButton {
-    left: 220px;
-    top: -220px;
-    transform: translate(0%, -100%);
+    left: 150px;
   }
 
   #helpButton {
-    left: 0;
-    top: -750px;
-    transform: translate(-50%, -100%);
+    left: 0px;
   }
 
   #magicButton {
-    left: -170px;
-    top: -600px;
-    transform: translate(-100%, -100%);
+    left: -150px;
   }
 
   #chatButton {
-    left: -230px;
-    top: -460px;
-    transform: translate(-100%, 0%);
+    left: -300px;
   }
 
   .coming-soon-container {
