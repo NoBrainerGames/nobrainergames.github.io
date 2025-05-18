@@ -3,6 +3,12 @@ layout: page
 ---
 
 <style>
+  body {
+    background-color: #BBBBBB;
+    margin: 0;
+    padding: 0;
+  }
+
   .page-content {
     padding: 0 !important;
     margin: 0 !important;
@@ -17,6 +23,11 @@ layout: page
   .site-header {
     border-bottom: none !important;
     margin-bottom: 0 !important;
+    transition: transform 1s ease-in-out;
+  }
+
+  .site-header.slide-out {
+    transform: translate(-100%, -100%);
   }
 
   .page-content {
@@ -28,49 +39,134 @@ layout: page
     display: none !important;
   }
 
-  .close-button {
+  .radial-buttons-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
+    bottom: 0px;
+    left: 50%;
+    width: 0;
+    height: 0;
     z-index: 1000;
-    display: none;
-    transition: background-color 0.3s;
   }
 
-  .close-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  .radial-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0.09, 0.09, 0.09, 0.5);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .radial-button-icon {
+    font-size: 20px;
+    transition: all 0.3s ease-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .radial-button-text {
+    opacity: 0;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: none;
+  }
+
+  .radial-button:hover {
+    width: 250px;
+    height: 250px;
+    background-color: #181818;
+    border-radius: 20px;
+  }
+
+  .radial-button:hover .radial-button-icon {
+    top: 10px;
+    transform: translate(-50%, 0%);
+  }
+
+  .radial-button:hover .radial-button-text {
+    display: block;
+    opacity: 1;
+  }
+
+  #closeButton {
+    left: 180px;
+    top: -500px;
+  }
+
+  #closeButton .radial-button-text {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    white-space: nowrap
+  }
+
+  #closeButton:hover {
+    height: 40px;
+    width: 80px;
+  }
+
+  #closeButton:hover .radial-button-icon {
+    opacity: 0;
+  }
+
+  #toolButton {
+    left: 220px;
+    top: -220px;
+    transform: translate(0%, -100%);
+  }
+
+  #helpButton {
+    left: 0;
+    top: -750px;
+    transform: translate(-50%, -100%);
+  }
+
+  #magicButton {
+    left: -170px;
+    top: -600px;
+    transform: translate(-100%, -100%);
+  }
+
+  #chatButton {
+    left: -230px;
+    top: -460px;
+    transform: translate(-100%, 0%);
   }
 
   .coming-soon-container {
-    height: calc(100vh - 122px);
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url('https://via.placeholder.com/1920x1080');
-    background-size: cover;
+    background-color: #181818;
     background-position: center;
     color: white;
-    position: relative;
+    position: absolute;
     margin: 0;
     padding: 0;
     top: 0;
-    transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+    transition: transform 1s ease-in-out;
   }
 
   .slide-out {
     transform: translate(-100%, -100%);
-    opacity: 0;
   }
 
   .content {
@@ -179,7 +275,43 @@ layout: page
   <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
 </div>
 
-<button id="closeButton" class="close-button" aria-label="Close">×</button>
+<div class="radial-buttons-container">
+  <button id="closeButton" class="radial-button" aria-label="Close">
+    <span class="radial-button-icon">×</span>
+    <div class="radial-button-text">close</div>
+  </button>
+  <button id="toolButton" class="radial-button" aria-label="Tool">
+    <span class="radial-button-icon">🔧</span>
+    <div class="radial-button-text">
+      Nobby can open files and websites for you. He can read these and summarise them to save you time.<br><br>He
+      can also listen in on a call and take notes for you so you can focus on the conversation.
+    </div>
+  </button>
+  <button id="helpButton" class="radial-button" aria-label="Help">
+    <span class="radial-button-icon">❔</span>
+    <div class="radial-button-text">
+      Nobby is a private digital assistant who lives on your personal devices.<br><br>He hangs out on your desktop when
+      you're
+      at
+      home, and can hitch a ride when you leave by jumping into your phone.
+    </div>
+  </button>
+  <button id="magicButton" class="radial-button" aria-label="Magic">
+    <span class="radial-button-icon">✨</span>
+    <div class="radial-button-text">
+      Nobby's magic is driven by local AI models that can use the combined power of all your devices he is installed
+      on.<br><br>This means Nobby's capabilities scale while keeping your data safe.
+    </div>
+  </button>
+  <button id="chatButton" class="radial-button" aria-label="Chat">
+    <span class="radial-button-icon">💬</span>
+    <div class="radial-button-text">
+      You can talk to Nobby with voice. He also understands and responds
+      with text, images, and audio.<br><br>All this runs on your device, with an option to call out to online AI
+      models for specific prompts.
+    </div>
+  </button>
+</div>
 
 <script src="coi-serviceworker.js"></script>
 
@@ -187,28 +319,30 @@ layout: page
   const canvas = document.getElementById('canvas');
 
   var Module = {
-    preRun: function() {
+    preRun: function () {
       const container = document.querySelector('.coming-soon-container');
+      const header = document.querySelector('.site-header');
 
-      Module['nobbyZoom'] = function() {
+      Module['nobbyZoom'] = function () {
         container.classList.add('slide-out');
+        header.classList.add('slide-out');
       }
     },
-    postRun: function() {
+    postRun: function () {
       if (canvas) canvas.focus();
     },
-    print: (function() {
-      return function(text) {
+    print: (function () {
+      return function (text) {
         if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
         console.log(text);
       };
     })(),
-    printErr: function(text) {
+    printErr: function (text) {
       if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
       console.error(text);
     },
     canvas: canvas,
-    setStatus: function(text) {
+    setStatus: function (text) {
       if (!Module.setStatus.last) Module.setStatus.last = {time: Date.now(), text: ''};
       if (text === Module.setStatus.last.text) return;
       const msg = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
@@ -222,14 +356,14 @@ layout: page
       }
     },
     totalDependencies: 0,
-    monitorRunDependencies: function(left) {
+    monitorRunDependencies: function (left) {
       this.totalDependencies = Math.max(this.totalDependencies, left);
       Module.setStatus(left ? 'preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'all downloads complete.');
     },
-    onRuntimeInitialized: function() {
+    onRuntimeInitialized: function () {
       Module.setStatus('module loaded');
 
-      requestAnimationFrame(function() {
+      requestAnimationFrame(function () {
         try {
           if (Module.setCanvasSize) {
             Module.setCanvasSize(window.innerWidth, window.innerHeight);
@@ -298,19 +432,32 @@ layout: page
     }
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.coming-soon-container');
-    const closeButton = document.getElementById('closeButton');
+  function showRadialButtons() {
+    document.querySelectorAll('.radial-button').forEach(button => {
+      button.style.display = 'block';
+    });
+  }
 
-    container.addEventListener('transitionend', function() {
+  function hideRadialButtons() {
+    document.querySelectorAll('.radial-button').forEach(button => {
+      button.style.display = 'none';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.coming-soon-container');
+    const header = document.querySelector('.site-header');
+
+    container.addEventListener('transitionend', function () {
       if (container.classList.contains('slide-out')) {
-        closeButton.style.display = 'block';
+        showRadialButtons();
       }
     });
 
-    closeButton.addEventListener('click', function() {
+    closeButton.addEventListener('click', function () {
       container.classList.remove('slide-out');
-      closeButton.style.display = 'none';
+      header.classList.remove('slide-out');
+      hideRadialButtons();
       _nobbyIdle();
     });
   });
