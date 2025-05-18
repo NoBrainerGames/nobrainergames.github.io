@@ -142,6 +142,16 @@ layout: page
     left: -300px;
   }
 
+  .nobby-interactor {
+    height: 170px;
+    width: 100px;
+    background-position: center;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -90px);
+  }
+
   .coming-soon-container {
     height: 100vh;
     width: 100%;
@@ -270,6 +280,9 @@ layout: page
   <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
 </div>
 
+<div class="nobby-interactor">
+</div>
+
 <div class="radial-buttons-container">
   <button id="closeButton" class="radial-button" aria-label="Close">
     <span class="radial-button-icon">×</span>
@@ -314,15 +327,7 @@ layout: page
   const canvas = document.getElementById('canvas');
 
   var Module = {
-    preRun: function () {
-      const container = document.querySelector('.coming-soon-container');
-      const header = document.querySelector('.site-header');
-
-      Module['nobbyZoom'] = function () {
-        container.classList.add('slide-out');
-        header.classList.add('slide-out');
-      }
-    },
+    preRun: function () { },
     postRun: function () {
       if (canvas) canvas.focus();
     },
@@ -442,18 +447,36 @@ layout: page
   document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.coming-soon-container');
     const header = document.querySelector('.site-header');
+    const interactor = document.querySelector('.nobby-interactor');
 
     container.addEventListener('transitionend', function () {
       if (container.classList.contains('slide-out')) {
         showRadialButtons();
+      } else {
+        interactor.style.display = 'block';
       }
     });
 
+    interactor.addEventListener('click', function () {
+      container.classList.add('slide-out');
+      header.classList.add('slide-out');
+      interactor.style.display = 'none';
+      _nobbyZoom();
+    });
+
+    interactor.addEventListener('mouseenter', function () {
+      _nobbyStartSpin();
+    });
+
+    interactor.addEventListener('mouseleave', function () {
+      _nobbyStopSpin();
+    });
+
     closeButton.addEventListener('click', function () {
+      _nobbyIdle();
+      hideRadialButtons();
       container.classList.remove('slide-out');
       header.classList.remove('slide-out');
-      hideRadialButtons();
-      _nobbyIdle();
     });
   });
 </script>
