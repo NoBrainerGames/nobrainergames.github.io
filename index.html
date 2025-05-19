@@ -142,6 +142,24 @@ layout: page
     left: -300px;
   }
 
+  .nobby-loading {
+    width: 400px;
+    background-position: center;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nobby-loading img {
+    max-width: 100%;
+    height: auto;
+    transform: rotate(180deg);
+  }
+
   .nobby-interactor {
     height: 180px;
     width: 100px;
@@ -216,7 +234,7 @@ layout: page
 
   .submit-button {
     padding: 12px 24px;
-    background-color: #FFAA40;
+    background-color: #3F6CFF;
     color: white;
     border: none;
     border-radius: 0 4px 4px 0;
@@ -227,7 +245,7 @@ layout: page
   }
 
   .submit-button:hover {
-    background-color: #45a049;
+    background-color: #FFAA40;
   }
 
   .logo-container {
@@ -285,6 +303,10 @@ layout: page
   <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
 </div>
 
+<div class="nobby-loading">
+  <img src="/assets/portal.gif" alt="loading...">
+</div>
+
 <div class="nobby-interactor">click me!<br>╰</div>
 
 <div class="radial-buttons-container">
@@ -334,6 +356,7 @@ layout: page
     preRun: function () {
       Module['nobbyDidLoad'] = function () {
         document.querySelector('.nobby-interactor').style.display = 'block';
+        document.querySelector('.nobby-loading').style.display = 'none';
       }
     },
     postRun: function () {
