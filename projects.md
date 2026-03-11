@@ -94,6 +94,10 @@ The graphics was powered by WebGPU and WGSL, rendering at 120FPS on a MacBook Pr
     allowfullscreen>
 </iframe>
 
-This is a VR experience created with the Ubiquitous Computing VR Lab, with the goal of researching novel input modes in VR using human hands.
+This was a VR experience created with the team at Ubiquitous Computing VR Lab, with the goal of researching novel input modes in VR using human hands.
 
 For this project we used C++ with Unreal Engine 4, and the Leap Motion device mounted on the Oculus Quest 1 for detecting hand and finger motion inside the game.
+
+Research was directed towards accurately detecting collisions between in-world objects and fast-moving player hands simulated by the Leap Motion framework. Collisions with objects deformed human hands occurately, and the skin folding around the finger joints were simulated for added realism.
+
+Detecting and using gaze as input was also explored, and resulted in a published research [paper](https://ieeexplore.ieee.org/document/7519387) that I co-authored with the team.
