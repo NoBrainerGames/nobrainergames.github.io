@@ -64,7 +64,7 @@ This is a prototype desktop assistant for MacOS created using C++17 and Vulkan. 
 
 The application interacted with the user by receiving voice, a desktop screenshot, and mouse position as inputs, running them through the multi-modal LLM, and rendering the LLM text output as voice, animated robot avatar actions, and tool invocations through my custom scripting system.
 
-The application rendered smoothly with the help of my multi-threaded design, allowing models to behave as data sources sitting in their own background threads, with the main thread sending queries and routing outputs between models and the rendering backend.
+The application rendered smoothly with the help of my multi-threaded design, allowing local AI models to behave as data sources sitting in their own background threads, with the main thread sending queries and routing outputs between models and the rendering backend.
 
 ## AI adventure RPG demo
 
