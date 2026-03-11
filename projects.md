@@ -36,7 +36,7 @@ I used a combination of C++17 for the performance-intensive parts, and exposed d
 
 This mini-game was presented at the Western Sydney University Welcome Week. It is a VR game about using controllers to catch rockets flying at the player. The hectic gameplay and art was meant to highlight our event partner WSU LaunchPad's branding, and was designed together with No Brainer Games.
 
-This was the first public game that was made with my [Reboot](./_posts/2024-12-15-a-new-engine-for-a-new-year) game engine. The systems that made it possible were written from the ground up and powered by Vulkan, OpenXR, and OpenAL-Soft:
+This was the first public game that was made with my [Reboot](https://nobrainergames.com/engine/2024/12/15/a-new-engine-for-a-new-year.html) game engine. The systems that made it possible were written from the ground up and powered by Vulkan, OpenXR, and OpenAL-Soft:
 
 - Sparse-array-based entity component system (ECS) used for event propagation 
 - API layer for zero-overhead interop with high-performance C and C++ libraries

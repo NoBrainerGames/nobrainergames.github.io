@@ -3,517 +3,564 @@ layout: page
 ---
 
 <style>
-  body {
-    background-color: #BBBBBB;
-    background-image: url('/assets/nobby-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-  }
+    body {
+        background-color: #bbbbbb;
+        background-image: url("/assets/nobby-background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+    }
 
-  .page-content {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+    .page-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 
-  .page-content .wrapper {
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+    .page-content .wrapper {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 
-  .site-header {
-    border-bottom: none !important;
-    margin-bottom: 0 !important;
-    transition: transform 1s ease-in-out;
-  }
+    .site-header {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+        transition: transform 1s ease-in-out;
+    }
 
-  .site-header.slide-out {
-    transform: translate(-100%, -100%);
-  }
+    .site-header.slide-out {
+        transform: translate(-100%, -100%);
+    }
 
-  .page-content {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
+    .page-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
 
-  .site-footer {
-    display: none !important;
-  }
+    .site-footer {
+        display: none !important;
+    }
 
-  .radial-buttons-container {
-    position: fixed;
-    bottom: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    z-index: 1000;
-    display: none;
-  }
+    .radial-buttons-container {
+        position: fixed;
+        bottom: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        z-index: 1000;
+        display: none;
+    }
 
-  .radial-button {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #181818;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease-out;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+    .radial-button {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color: #181818;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease-out;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
 
-  .radial-button-icon {
-    font-size: 20px;
-    transition: all 0.3s ease-out;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    .radial-button-icon {
+        font-size: 20px;
+        transition: all 0.3s ease-out;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-  .radial-button-text {
-    opacity: 0;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    display: none;
-  }
+    .radial-button-text {
+        opacity: 0;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        display: none;
+    }
 
-  .radial-button:hover {
-    width: 250px;
-    height: 250px;
-    border-radius: 20px;
-  }
+    .radial-button:hover {
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+    }
 
-  .radial-button:hover .radial-button-icon {
-    top: 10px;
-    transform: translate(-50%, 0%);
-  }
+    .radial-button:hover .radial-button-icon {
+        top: 10px;
+        transform: translate(-50%, 0%);
+    }
 
-  .radial-button:hover .radial-button-text {
-    display: block;
-    opacity: 1;
-  }
+    .radial-button:hover .radial-button-text {
+        display: block;
+        opacity: 1;
+    }
 
-  #closeButton {
-    left: 300px;
-  }
+    #closeButton {
+        left: 300px;
+    }
 
-  #closeButton .radial-button-text {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    white-space: nowrap
-  }
+    #closeButton .radial-button-text {
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        white-space: nowrap;
+    }
 
-  #closeButton:hover {
-    height: 40px;
-    width: 80px;
-  }
+    #closeButton:hover {
+        height: 40px;
+        width: 80px;
+    }
 
-  #closeButton:hover .radial-button-icon {
-    opacity: 0;
-  }
+    #closeButton:hover .radial-button-icon {
+        opacity: 0;
+    }
 
-  #toolButton {
-    left: 150px;
-  }
+    #toolButton {
+        left: 150px;
+    }
 
-  #helpButton {
-    left: 0px;
-  }
+    #helpButton {
+        left: 0px;
+    }
 
-  #magicButton {
-    left: -150px;
-  }
+    #magicButton {
+        left: -150px;
+    }
 
-  #chatButton {
-    left: -300px;
-  }
+    #chatButton {
+        left: -300px;
+    }
 
-  .nobby-loading {
-    width: 400px;
-    background-position: center;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -200px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .nobby-loading {
+        width: 400px;
+        background-position: center;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, -200px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .nobby-loading img {
-    max-width: 100%;
-    height: auto;
-    transform: rotate(180deg);
-  }
+    .nobby-loading img {
+        max-width: 100%;
+        height: auto;
+        transform: rotate(180deg);
+    }
 
-  .nobby-interactor {
-    height: 180px;
-    width: 100px;
-    background-position: center;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -90px);
-    display: none;
-    color: #FFAA40;
-    font-size: 12px;
-    font-weight: bold;
-  }
+    .nobby-interactor {
+        height: 180px;
+        width: 100px;
+        background-position: center;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, -90px);
+        display: none;
+        color: #ffaa40;
+        font-size: 12px;
+        font-weight: bold;
+    }
 
-  .coming-soon-container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #181818;
-    background-position: center;
-    color: white;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    transition: transform 1s ease-in-out;
-  }
+    .coming-soon-container {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #181818;
+        background-position: center;
+        color: white;
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        top: 0;
+        transition: transform 1s ease-in-out;
+    }
 
-  .slide-out {
-    transform: translate(-100%, -100%);
-  }
+    .slide-out {
+        transform: translate(-100%, -100%);
+    }
 
-  .content {
-    padding: 2rem;
-    z-index: 2;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .content {
+        padding: 2rem;
+        z-index: 2;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
 
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
 
-  .email-form {
-    display: flex;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .email-form {
+        display: flex;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-  .email-input {
-    flex-grow: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    font-size: 1rem;
-  }
+    .email-input {
+        flex-grow: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+    }
 
-  .submit-button {
-    padding: 12px 24px;
-    background-color: #3F6CFF;
-    color: white;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
+    .submit-button {
+        padding: 12px 24px;
+        background-color: #3f6cff;
+        color: white;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
 
-  .submit-button:hover {
-    background-color: #FFAA40;
-  }
+    .submit-button:hover {
+        background-color: #ffaa40;
+    }
 
-  .logo-container {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    .logo-container {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-  .logo {
-    max-width: 200px;
-    height: auto;
-  }
+    .logo {
+        max-width: 200px;
+        height: auto;
+    }
 
-  canvas.emscripten {
-    border: none;
-    background-color: transparent;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    outline: none;
-  }
+    canvas.emscripten {
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        outline: none;
+    }
 
-  #canvas-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0;
-    border: 0 none;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
+    #canvas-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        border: 0 none;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <div class="coming-soon-container">
-  <div class="content">
-    <h1>Project Nobby</h1>
-    <p>We're a designer, a programmer, and a researcher working on your trust-worthy sidekick in work and play.</p>
+    <div class="content">
+        <h1>Project Nobby</h1>
+        <p>
+            We're a designer, a programmer, and a researcher working on your
+            trust-worthy sidekick in work and play.
+        </p>
 
-    <form class="email-form" action="https://formspree.io/f/mnndzlbr" method="POST">
-      <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
-      <input type="text" name="_gotcha" style="display:none">
-      <input type="hidden" name="_subject" value="New Nobby subscriber">
-      <button type="submit" class="submit-button">Update me!</button>
-    </form>
-  </div>
+        <form
+            class="email-form"
+            action="https://formspree.io/f/mnndzlbr"
+            method="POST"
+        >
+            <input
+                type="email"
+                name="email"
+                class="email-input"
+                placeholder="Enter your email address"
+                required
+            />
+            <input type="text" name="_gotcha" style="display: none" />
+            <input type="hidden" name="_subject" value="New Nobby subscriber" />
+            <button type="submit" class="submit-button">Update me!</button>
+        </form>
+    </div>
 
-  <div class="logo-container">
-    <img src="/assets/launchpad.png" alt="Logo" class="logo">
-  </div>
+    <div class="logo-container">
+        <img src="/assets/launchpad.png" alt="Logo" class="logo" />
+    </div>
 </div>
 
 <div id="canvas-container">
-  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+    <canvas
+        class="emscripten"
+        id="canvas"
+        oncontextmenu="event.preventDefault()"
+        tabindex="-1"
+    ></canvas>
 </div>
 
 <div class="nobby-loading">
-  <img src="/assets/portal.gif" alt="loading...">
+    <img src="/assets/portal.gif" alt="loading..." />
 </div>
 
-<div class="nobby-interactor">click me!<br>╰</div>
+<div class="nobby-interactor">click me!<br />╰</div>
 
 <div class="radial-buttons-container">
-  <button id="closeButton" class="radial-button" aria-label="Close">
-    <span class="radial-button-icon">×</span>
-    <div class="radial-button-text">close</div>
-  </button>
-  <button id="toolButton" class="radial-button" aria-label="Tool">
-    <span class="radial-button-icon">🔧</span>
-    <div class="radial-button-text">
-      Nobby can open files and websites for you. He can read these and summarise them to save you time.<br><br>He
-      can also listen in on a call and take notes for you so you can focus on the conversation.
-    </div>
-  </button>
-  <button id="helpButton" class="radial-button" aria-label="Help">
-    <span class="radial-button-icon">❔</span>
-    <div class="radial-button-text">
-      Nobby is a private digital assistant who lives on your personal devices.<br><br>He hangs out on your desktop when
-      you're
-      at
-      home, and can hitch a ride when you leave by jumping into your phone.
-    </div>
-  </button>
-  <button id="magicButton" class="radial-button" aria-label="Magic">
-    <span class="radial-button-icon">✨</span>
-    <div class="radial-button-text">
-      Nobby's magic is driven by local AI models that can use the combined power of all your devices he is installed
-      on.<br><br>This means Nobby's capabilities scale while keeping your data safe.
-    </div>
-  </button>
-  <button id="chatButton" class="radial-button" aria-label="Chat">
-    <span class="radial-button-icon">💬</span>
-    <div class="radial-button-text">
-      You can talk to Nobby with voice. He also understands and responds
-      with text, images, and audio.<br><br>All this runs on your device, with an option to call out to online AI
-      models for specific prompts.
-    </div>
-  </button>
+    <button id="closeButton" class="radial-button" aria-label="Close">
+        <span class="radial-button-icon">×</span>
+        <div class="radial-button-text">close</div>
+    </button>
+    <button id="toolButton" class="radial-button" aria-label="Tool">
+        <span class="radial-button-icon">🔧</span>
+        <div class="radial-button-text">
+            Nobby can open files and websites for you. He can read these and
+            summarise them to save you time.<br /><br />He can also listen in on
+            a call and take notes for you so you can focus on the conversation.
+        </div>
+    </button>
+    <button id="helpButton" class="radial-button" aria-label="Help">
+        <span class="radial-button-icon">❔</span>
+        <div class="radial-button-text">
+            Nobby is a private digital assistant who lives on your personal
+            devices.<br /><br />He hangs out on your desktop when you're at
+            home, and can hitch a ride when you leave by jumping into your
+            phone.
+        </div>
+    </button>
+    <button id="magicButton" class="radial-button" aria-label="Magic">
+        <span class="radial-button-icon">✨</span>
+        <div class="radial-button-text">
+            Nobby's magic is driven by local AI models that can use the combined
+            power of all your devices he is installed on.<br /><br />This means
+            Nobby's capabilities scale while keeping your data safe.
+        </div>
+    </button>
+    <button id="chatButton" class="radial-button" aria-label="Chat">
+        <span class="radial-button-icon">💬</span>
+        <div class="radial-button-text">
+            You can talk to Nobby with voice. He also understands and responds
+            with text, images, and audio.<br /><br />All this runs on your
+            device, with an option to call out to online AI models for specific
+            prompts.
+        </div>
+    </button>
 </div>
 
 <script src="coi-serviceworker.js"></script>
 
-<script type='text/javascript'>
-  const canvas = document.getElementById('canvas');
+<script type="text/javascript">
+    const canvas = document.getElementById("canvas");
 
-  var Module = {
-    preRun: function () {
-      Module['nobbyDidLoad'] = function () {
-        document.querySelector('.nobby-interactor').style.display = 'block';
-        document.querySelector('.nobby-loading').style.display = 'none';
-      }
-    },
-    postRun: function () {
-      if (canvas) canvas.focus();
-    },
-    print: (function () {
-      return function (text) {
-        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-        console.log(text);
-      };
-    })(),
-    printErr: function (text) {
-      if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-      console.error(text);
-    },
-    canvas: canvas,
-    setStatus: function (text) {
-      if (!Module.setStatus.last) Module.setStatus.last = {time: Date.now(), text: ''};
-      if (text === Module.setStatus.last.text) return;
-      const msg = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-      const now = Date.now();
-      if (msg && now - Module.setStatus.last.time < 30) return;
-      Module.setStatus.last.time = now;
-      Module.setStatus.last.text = text;
-      if (msg) text = msg[1];
-      if (text.length > 0) {
-        console.log(`emscripten: ${text}`);
-      }
-    },
-    totalDependencies: 0,
-    monitorRunDependencies: function (left) {
-      this.totalDependencies = Math.max(this.totalDependencies, left);
-      Module.setStatus(left ? 'preparing... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : 'all downloads complete.');
-    },
-    onRuntimeInitialized: function () {
-      Module.setStatus('module loaded');
-    },
-  };
+    var Module = {
+        preRun: function () {
+            Module["nobbyDidLoad"] = function () {
+                document.querySelector(".nobby-interactor").style.display =
+                    "block";
+                document.querySelector(".nobby-loading").style.display = "none";
+            };
+        },
+        postRun: function () {
+            if (canvas) canvas.focus();
+        },
+        print: (function () {
+            return function (text) {
+                if (arguments.length > 1)
+                    text = Array.prototype.slice.call(arguments).join(" ");
+                console.log(text);
+            };
+        })(),
+        printErr: function (text) {
+            if (arguments.length > 1)
+                text = Array.prototype.slice.call(arguments).join(" ");
+            console.error(text);
+        },
+        canvas: canvas,
+        setStatus: function (text) {
+            if (!Module.setStatus.last)
+                Module.setStatus.last = { time: Date.now(), text: "" };
+            if (text === Module.setStatus.last.text) return;
+            const msg = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+            const now = Date.now();
+            if (msg && now - Module.setStatus.last.time < 30) return;
+            Module.setStatus.last.time = now;
+            Module.setStatus.last.text = text;
+            if (msg) text = msg[1];
+            if (text.length > 0) {
+                console.log(`emscripten: ${text}`);
+            }
+        },
+        totalDependencies: 0,
+        monitorRunDependencies: function (left) {
+            this.totalDependencies = Math.max(this.totalDependencies, left);
+            Module.setStatus(
+                left
+                    ? "preparing... (" +
+                          (this.totalDependencies - left) +
+                          "/" +
+                          this.totalDependencies +
+                          ")"
+                    : "all downloads complete.",
+            );
+        },
+        onRuntimeInitialized: function () {
+            Module.setStatus("module loaded");
+        },
+    };
 
-  async function initWebGPU() {
-    try {
-      if (!navigator.gpu) {
-        throw new Error("WebGPU not supported");
-      }
+    async function initWebGPU() {
+        try {
+            if (!navigator.gpu) {
+                throw new Error("WebGPU not supported");
+            }
 
-      const requiredFeatures = [
-        "depth-clip-control",
-        "depth32float-stencil8",
-        "texture-compression-bc",
-        "indirect-first-instance",
-        "shader-f16",
-        "rg11b10ufloat-renderable",
-        "bgra8unorm-storage",
-        "float32-filterable",
-        "unorm16-texture-formats",
-        "snorm16-texture-formats",
-      ];
+            const requiredFeatures = [
+                "depth-clip-control",
+                "depth32float-stencil8",
+                "texture-compression-bc",
+                "indirect-first-instance",
+                "shader-f16",
+                "rg11b10ufloat-renderable",
+                "bgra8unorm-storage",
+                "float32-filterable",
+                "unorm16-texture-formats",
+                "snorm16-texture-formats",
+            ];
 
-      const adapter = await navigator.gpu.requestAdapter({powerPreference: "high-performance"});
-      if (!adapter) {
-        throw new Error("WebGPU adapter not available");
-      }
+            const adapter = await navigator.gpu.requestAdapter({
+                powerPreference: "high-performance",
+            });
+            if (!adapter) {
+                throw new Error("WebGPU adapter not available");
+            }
 
-      const supportedFeatures = requiredFeatures.filter(feature => adapter.features.has(feature));
+            const supportedFeatures = requiredFeatures.filter((feature) =>
+                adapter.features.has(feature),
+            );
 
-      const device = await adapter.requestDevice({
-        requiredFeatures: supportedFeatures,
-        requiredLimits: {
-          maxColorAttachmentBytesPerSample: adapter.limits.maxColorAttachmentBytesPerSample,
-          maxDynamicStorageBuffersPerPipelineLayout: adapter.limits.maxDynamicStorageBuffersPerPipelineLayout,
-          maxStorageBufferBindingSize: adapter.limits.maxStorageBufferBindingSize || adapter.limits.maxDynamicStorageBuffersPerPipelineLayout
+            const device = await adapter.requestDevice({
+                requiredFeatures: supportedFeatures,
+                requiredLimits: {
+                    maxColorAttachmentBytesPerSample:
+                        adapter.limits.maxColorAttachmentBytesPerSample,
+                    maxDynamicStorageBuffersPerPipelineLayout:
+                        adapter.limits
+                            .maxDynamicStorageBuffersPerPipelineLayout,
+                    maxStorageBufferBindingSize:
+                        adapter.limits.maxStorageBufferBindingSize ||
+                        adapter.limits
+                            .maxDynamicStorageBuffersPerPipelineLayout,
+                },
+            });
+            console.log("Supported WebGPU features:", supportedFeatures);
+
+            Module.preinitializedWebGPUDevice = device;
+            return true;
+        } catch (error) {
+            console.error("WebGPU initialization failed:", error);
+            Module.setStatus("WebGPU error: " + error.message);
+            return false;
         }
-      });
-      console.log("Supported WebGPU features:", supportedFeatures);
-
-      Module.preinitializedWebGPUDevice = device;
-      return true;
-    } catch (error) {
-      console.error("WebGPU initialization failed:", error);
-      Module.setStatus('WebGPU error: ' + error.message);
-      return false;
-    }
-  }
-
-  Module.setStatus('initializing...');
-
-  initWebGPU().then(success => {
-    if (success) {
-      Module.setStatus('downloading...');
-      const script = document.createElement('script');
-      script.src = 'webnobby.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelector('.radial-buttons-container');
-    const container = document.querySelector('.coming-soon-container');
-    const header = document.querySelector('.site-header');
-    const interactor = document.querySelector('.nobby-interactor');
-
-    const nobbyBackgroundSound = new Audio('/assets/nobby-background.mp3');
-    nobbyBackgroundSound.loop = true;
-    nobbyBackgroundSound.volume = 0.4;
-
-    function startBackgroundAudio() {
-      nobbyBackgroundSound.currentTime = 0;
-      nobbyBackgroundSound.play().catch(e => console.error("Background sound error:", e));
     }
 
-    function stopBackgroundAudio() {
-      nobbyBackgroundSound.pause();
-    }
+    Module.setStatus("initializing...");
 
-    const buttonHoverSound = new Audio('/assets/button-hover.mp3');
-    buttonHoverSound.volume = 0.5;
-
-    function playButtonHoverSound() {
-      buttonHoverSound.currentTime = 0;
-      buttonHoverSound.play().catch(e => console.error("Button hover sound error:", e));
-    }
-
-    document.querySelectorAll('.radial-button').forEach(button => {
-      button.addEventListener('mouseenter', playButtonHoverSound);
+    initWebGPU().then((success) => {
+        if (success) {
+            Module.setStatus("downloading...");
+            const script = document.createElement("script");
+            script.src = "webnobby.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
     });
 
-    container.addEventListener('transitionend', function () {
-      if (container.classList.contains('slide-out')) {
-        buttons.style.display = 'block';
-        startBackgroundAudio();
-      } else {
-        interactor.style.display = 'block';
-      }
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelector(".radial-buttons-container");
+        const container = document.querySelector(".coming-soon-container");
+        const header = document.querySelector(".site-header");
+        const interactor = document.querySelector(".nobby-interactor");
 
-    interactor.addEventListener('click', function () {
-      container.classList.add('slide-out');
-      header.classList.add('slide-out');
-      interactor.style.display = 'none';
-      _nobbyZoom();
-    });
+        const nobbyBackgroundSound = new Audio("/assets/nobby-background.mp3");
+        nobbyBackgroundSound.loop = true;
+        nobbyBackgroundSound.volume = 0.4;
 
-    interactor.addEventListener('mouseenter', function () {
-      _nobbyStartSpin();
-    });
+        function startBackgroundAudio() {
+            nobbyBackgroundSound.currentTime = 0;
+            nobbyBackgroundSound
+                .play()
+                .catch((e) => console.error("Background sound error:", e));
+        }
 
-    interactor.addEventListener('mouseleave', function () {
-      _nobbyStopSpin();
-    });
+        function stopBackgroundAudio() {
+            nobbyBackgroundSound.pause();
+        }
 
-    closeButton.addEventListener('click', function () {
-      stopBackgroundAudio();
-      _nobbyIdle();
-      buttons.style.display = 'none';
-      container.classList.remove('slide-out');
-      header.classList.remove('slide-out');
+        const buttonHoverSound = new Audio("/assets/button-hover.mp3");
+        buttonHoverSound.volume = 0.5;
+
+        function playButtonHoverSound() {
+            buttonHoverSound.currentTime = 0;
+            buttonHoverSound
+                .play()
+                .catch((e) => console.error("Button hover sound error:", e));
+        }
+
+        document.querySelectorAll(".radial-button").forEach((button) => {
+            button.addEventListener("mouseenter", playButtonHoverSound);
+        });
+
+        container.addEventListener("transitionend", function () {
+            if (container.classList.contains("slide-out")) {
+                buttons.style.display = "block";
+                startBackgroundAudio();
+            } else {
+                interactor.style.display = "block";
+            }
+        });
+
+        interactor.addEventListener("click", function () {
+            container.classList.add("slide-out");
+            header.classList.add("slide-out");
+            interactor.style.display = "none";
+            _nobbyZoom();
+        });
+
+        interactor.addEventListener("mouseenter", function () {
+            _nobbyStartSpin();
+        });
+
+        interactor.addEventListener("mouseleave", function () {
+            _nobbyStopSpin();
+        });
+
+        closeButton.addEventListener("click", function () {
+            stopBackgroundAudio();
+            _nobbyIdle();
+            buttons.style.display = "none";
+            container.classList.remove("slide-out");
+            header.classList.remove("slide-out");
+        });
     });
-  });
 </script>
